@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+  {% render 'elevar-head' %}
+  {% render 'elevar-head-listener' %}
+    
+<!--     <script src="https://cdn.yottaa.com/rapid.rum.min.js?key=PkciaJszEX0UaQ"></script> -->
+<script>
+//   Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=PkciaJszEX0UaQ');
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <style>
+      /* .section--payment-method div[data-gateway-name="paypal"] {
+        display: none;
+      } */
+
+      .dynamic-checkout .dynamic-checkout__buttons .shopify-cleanslate ul[data-shopify-buttoncontainer="true"]>li {
+        flex: 1;
+      }
+
+      .dynamic-checkout .dynamic-checkout__buttons .shopify-cleanslate ul[data-shopify-buttoncontainer="true"]>li:last-child {
+        display: none;
+      }
+
+      .dynamic-checkout .dynamic-checkout__buttons .shopify-cleanslate ul[data-shopify-buttoncontainer="true"]>li:nth-child(2) {
+        margin-right: 0 !important;
+      }
+      .page--thank-you .advance_reorder_footer.btn_advance_footer{
+      	display:none;
+      }
+      #thankyou-nosto-1{
+        padding-top: 30px;
+      }
+    </style>
+    {% include "loyaltylion" %}
+<script>lion.configure({ checkout: true })</script>
+{% render 'weglot_hreftags' %}
+{% render 'weglot_switcher' %}
+</head>
+  <body>
+  {% render 'elevar-checkout-end' %}
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+            <div class="nosto_element hidden" id="thankyou-nosto-1"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+
+    <script>
+      if (Shopify.Checkout.OrderStatus ) {
+//         console.log("here is order status page");
+        $(".nosto_element").removeClass("hidden");
+        $(".os-step__info").addClass("hidden");
+      }    
+    </script>
+    <img src="https://tags.w55c.net/rs?id=c5f0523edfef443289be5ca54df3cf01&t=checkout&tx=$TRANSACTION_ID&sku=$SKUS&price=$price" / style="display:none;">
+  </body>
+</html>

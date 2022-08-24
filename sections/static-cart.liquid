@@ -1,0 +1,381 @@
+{% assign is_customer = false %}
+{% if shop.customer_accounts_enabled and customer %}
+  {% assign is_customer = true %}
+{% endif %}
+
+{% assign has_sidebar = false %}
+{% assign has_items = false %}
+{% assign show_continue_link = false %}
+
+{% if section.blocks.size > 0 %}
+  {% assign has_sidebar = true %}
+{% endif %}
+
+{% if cart.items.size > 0 %}
+  {% assign has_items = true %}
+{% endif %}
+
+{% assign continue_url = "/collections/all" %}
+{% if settings.continue_shopping_url != blank %}
+  {% assign continue_url = settings.continue_shopping_url %}
+{% endif %}
+
+{% if settings.continue_url_cart %}
+  {% assign show_continue_link = true %}
+  {%- capture continue_link_html -%}
+    <a class="cart-continue" href="{{ continue_url }}">
+      {{ 'cart.general.continue_shopping' | t }}
+      {% include 'icon-library', id: 'icon-chevron-down-small' %}
+    </a>
+  {%- endcapture -%}
+{% endif %}
+
+<script
+  type="application/json"
+  data-section-type="static-cart"
+  data-section-id="{{ section.id }}"
+  data-section-data>
+  {
+    "cart": {{ cart | json }},
+    "settings": {
+      "shipping": {{ section.settings.enable_shipping_calc | json }},
+      "stock_limit": {{ 'cart.general.stock_limit' | t: quantity: '** quantity **', title: '** title **' | json }},
+      "money_format": {{ shop.money_format | strip_html | json }}
+    },
+    "shipping": {
+      "calculate_shipping": {{ 'cart.shipping.calculate_shipping' | t | json }},
+      "calculating": {{ 'cart.shipping.calculating' | t | json }},
+      "customer": {{ is_customer | default: false | json }},
+      "multiple_rates": {{ 'cart.shipping.multiple_rates' | t: number_of_rates: '*number_of_rates*', address: '*address*', rate: '*rate*' | json }},
+      "one_rate": {{ 'cart.shipping.one_rate' | t: address: '*address*' | json }},
+      "no_rates": {{ 'cart.shipping.no_rates' | t | json }},
+      "rate_value": {{ 'cart.shipping.rate_value' | t: rate_title: '*rate_title*', rate: '*rate*'  | json }},
+      "zip": {{ 'cart.shipping.zip' | t | json }},
+      "shipment_too_heavy": {{ 'cart.shipping.shipment_too_heavy' | t | json }},
+      "error_general": {{ 'cart.shipping.error_general' | t | json }}
+    }
+  }
+</script>
+
+
+<div class="cart-custom-wrapper cart">
+  <div class="cart-announcement">
+    <div class="top-wrapper">
+      <p class="spend-more {% if cart.total_price > 7500 %}hidden{% endif %}">
+        Spend <span class="remaining">${{ 7500 | minus: cart.total_price | divided_by: 100.00 }}</span> more for free shipping*
+      </p>
+      <p class="free-gift-first {% if cart.total_price < 7500 or cart.total_price > 15000 %}hidden{% endif %}">
+        Spend total $150 to receive free gift offer #1, only 
+        <span class="first-gift">${{ 15000 | minus: cart.total_price | divided_by: 100.00 }}</span> to go!
+      </p>
+      <p class="free-gift-second {% if cart.total_price < 15000 or cart.total_price > 20000 %}hidden{% endif %}">
+        Spend total $200 to receive free gift offer #2, only 
+        <span class="second-gift">${{ 20000 | minus: cart.total_price | divided_by: 100.00 }}</span> to go!
+      </p>
+      <p class="free-gift-third {% if cart.total_price < 20000 or cart.total_price > 25000 %}hidden{% endif %}">
+        Spend total $250 to receive free gift offer #3, only 
+        <span class="third-gift">${{ 25000 | minus: cart.total_price | divided_by: 100.00 }}</span> to go!
+      </p>
+      <p class="free-gift-fourth {% if cart.total_price < 25000 %}hidden{% endif %}">
+        Congrautulations you have earned free gift offer #3!
+      </p> 
+      <a class="spend-more-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free shipping</a>
+      <a class="free-gift-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free gift</a>
+
+    </div>
+    <div class="bottom-wrapper">
+      <p class="{% if cart.total_price > 7500 %}hidden{% endif %} free-gift-bottom-spend-more free-gift-bottom">
+        Spend $75 receive Free Shipping
+      </p>            
+      <p class="{% if cart.total_price < 7500 or cart.total_price > 15000 %}hidden{% endif %} free-gift-bottom-first free-gift-bottom">
+        Spend $150 receive Hand Sanitizer Gel a $18.49 value
+      </p>
+      <p class="{% if cart.total_price < 15000 or cart.total_price > 20000 %}hidden{% endif %} free-gift-bottom-second free-gift-bottom">
+        Spend $200 receive Hand Sanitizer Gel a $18.49 value & Fulsol Spray a $14.99 value
+      </p>
+      <p class="free-gift-bottom-third {% if cart.total_price < 20000 or cart.total_price > 25000 %}hidden{% endif %} free-gift-bottom">
+        <span class="desktop-show">Spend $250 receive Hand Sanitizer Gel a $18.49 value & Fulsol Spray a $14.99 value & Fuller Brush Pin a $19.99 value</span>
+        <span class="mobile-show">Spend $250 receive Free Gift #1 & Free Gift #2 & Free Gift #3</span>
+      </p>
+      <p class="free-gift-bottom-fourth {% if cart.total_price < 25000 %}hidden{% endif %} free-gift-bottom">
+        Congrats, you've earned all 3 free gifts
+      </p>
+    </div>
+
+  </div>
+
+  <div class="progress-bar-wrapper {% if cart.total_price == 0 %}hidden{% endif %}" data-cart-totalprice="{{ cart.total_price }}">
+    <div class="progress-bar-component">
+      <progress data-index="4" max="7500" class="progress-bar progress-bar-first {% if cart.total_price > 7500 %}completed{% endif %}" 
+                value="{% if cart.total_price < 7500 %}{{ cart.total_price }}{% elsif cart.total_price > 7500 %}7500{% else %}0{% endif %}"></progress> 
+      <span class="tier-label first">Free <br>Shipping*</span>
+      <progress data-index="3" max="7500" class="progress-bar progress-bar-second {% if cart.total_price > 15000 %}completed{% endif %}" 
+                value="{% if cart.total_price > 7500 and cart.total_price < 15000 %}{{ cart.total_price | minus: 7500 }}{% elsif cart.total_price > 15000 %}15000{% else %}0{% endif %}"></progress> 
+      <span class="tier-label last second ">Free Gift <br> Offer #1<br>Spend $150</span>
+      <!--             <span class="tier-label second mobile-show">Free Gift <br> Offer #1</span> -->
+      <progress data-index="2" max="5000" class="progress-bar progress-bar-third {% if cart.total_price > 20000 %}completed{% endif %}" 
+                value="{% if cart.total_price > 15000 and cart.total_price < 20000 %}{{ cart.total_price | minus: 15000 }}{% elsif cart.total_price > 20000 %}20000{% else %}0{% endif %}"></progress> 
+      <span class="tier-label last third ">Free Gift <br> Offer #2<br>Spend $200</span>
+      <!--             <span class="tier-label third mobile-show">Free Gift <br> Offer #2</span> -->
+      <progress data-index="1" max="5000" class="progress-bar progress-bar-fourth {% if cart.total_price > 25000 %}completed{% endif %}" 
+                value="{% if cart.total_price > 20000 and cart.total_price < 25000 %}{{ cart.total_price | minus: 20000 }}{% elsif cart.total_price > 25000 %}25000{% else %}0{% endif %}"></progress> 
+      <span class="tier-label last ">Free Gift <br> Offer #3<br>Spend $250</span>
+      <!--             <span class="tier-label last mobile-show">Free Gift <br> Offer #3</span> -->
+    </div>
+  </div>
+</div>
+
+
+
+<form
+  class="cart {% if has_sidebar %}has-sidebar{% endif %}"
+  action="{{ routes.cart_url }}"
+  method="post"
+  aria-label="cart checkout"
+  data-cart-form
+>
+  <header class="cart-title">
+    <div class="cart-title-left">
+      <h1>{{ 'cart.general.your_cart' | t }}</h1>
+
+      {% if has_items %}
+        <div class="cart-title-total--small"></div>
+      {% endif %}
+    </div>
+
+    {% if has_items or show_continue_link %}
+      <div class="cart-title-right">
+        {% if has_items %}
+          <div class="cart-title-total--large">
+            <div class="cart-title-total" data-cart-title-total>
+              {{ 'cart.general.subtotal' | t }}
+
+              <span class="money" data-cart-total="{{ cart.total_price }}">
+                {{ cart.total_price | money }}
+              </span>
+            </div>
+          </div>
+
+          <button
+            class="button-primary cart-title-button"
+            name="checkout"
+            type="submit"
+            aria-label="{{ 'cart.general.checkout' | t }}"
+          >
+            {% if settings.enable_checkout_lock_icon %}
+              {% include 'icon-library', id: 'icon-checkout-lock' %}
+            {% else %}
+              {% include 'icon-library', id: 'icon-cart' %}
+            {% endif %}
+            {{ 'cart.general.checkout' | t }}
+          </button>
+        {% elsif show_continue_link %}
+          {{ continue_link_html }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </header>
+
+  <section
+    class="cartitems--container {% if has_sidebar %}has-sidebar{% endif %}">
+    <div class="cartitems">
+      <ul
+        class="
+          cartitems--list
+          {% if settings.enable_product_card_spacing == false %}cartitems--no-spacing{% endif %}
+        "
+      >
+      {% if has_items %}
+        {% for item in cart.items %}
+          {%
+            include 'cart-item',
+            item: item
+          %}
+        {% endfor %}
+        </ul>
+        <div class="cart-total" data-cart-totals>
+          {% if section.settings.enable_order_notes %}
+            <div class="cart-ordernote">
+              <span class="cart-ordernote-heading">{{ 'cart.general.enter_order_note' | t }}</span>
+              <div class="form-field">
+                <textarea class="form-field-input form-field-textarea" name="note" id="cart-note">{{ cart.note }}</textarea>
+                <label class="form-field-title" for="cart-note">{{ 'cart.general.special_instructions' | t }}</label>
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="cart-subtotal">
+            <span aria-live="polite">{{ 'cart.general.subtotal' | t }}</span>
+            <span class="money" aria-live="polite" data-cart-total>{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+
+        <div class="rte cart-notifications" data-cart-notifications></div>
+        <div class="rte cart-tools" data-cart-tools></div>
+
+        <div class="cart-shipping">
+          {% if cart.requires_shipping %}
+            {{ 'cart.general.shipping_at_checkout' | t }}
+          {% else %}
+            {{ 'cart.general.taxes_at_checkout' | t }}
+          {% endif %}
+
+          {% comment %}
+            snippets/cart-shipping.liquid has an internal check to see if shipping is required
+          {% endcomment %}
+          {% if section.settings.enable_shipping_calc %}
+            {% include 'cart-shipping' %}
+          {% endif %}
+        </div>
+
+        <div class="cart-checkout">
+          <button
+            class="button-primary"
+            type="submit"
+            name="checkout"
+            aria-label="{{ 'cart.general.checkout' | t }}"
+          >
+            {% if settings.enable_checkout_lock_icon %}
+              {% include 'icon-library', id: 'icon-checkout-lock' %}
+            {% else %}
+              {% include 'icon-library', id: 'icon-cart' %}
+            {% endif %}
+            {{ 'cart.general.checkout' | t }}
+          </button>
+
+          {% if additional_checkout_buttons %}
+            <div class="additional-checkout-buttons">
+              {{ content_for_additional_checkout_buttons }}
+            </div>
+          {% endif %}
+
+          {% if show_continue_link %}
+            {{ continue_link_html }}
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="cartitems-empty">
+          <div class="cartitems-empty--inner">
+            <p>{{ 'cart.general.cart_empty' | t }}</p>
+
+            {% if show_continue_link %}
+              <a class="button-primary" href="{{ continue_url }}">
+                {% include 'icon-library', id: 'icon-cart' %}
+                {{ 'cart.general.continue_shopping' | t }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if has_sidebar %}
+      <div class="cart-sidebar">
+        {% for block in section.blocks %}
+          {% if block.type == 'image' %}
+            {% assign image = block.settings.image %}
+
+            <article class="cart-sidebar-item">
+              {% if image %}
+                {%
+                  include 'rimg',
+                  img: image,
+                  class: 'cart-sidebar-item-image',
+                  size: '445x',
+                  lazy: settings.lazy_load,
+                  canvas: settings.lazy_load
+                %}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder--image cart-sidebar-item-image' }}
+              {% endif %}
+            </article>
+          {% endif %}
+
+          {% if block.type == 'richtext' %}
+            <article class="cart-sidebar-item cart-sidebar-item--text rte">
+              {{ block.settings.richtext }}
+            </article>
+          {% endif %}
+
+          {% if block.type == 'page' %}
+            <article class="cart-sidebar-item cart-sidebar-item--text rte">
+              {{ pages[block.settings.page].content }}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+</form>
+
+{% schema %}
+{
+  "name": "Cart page",
+  "class": "cart--section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_order_notes",
+      "label": "Enable order notes text box",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Shipping estimator"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shipping_calc",
+      "label": "Enable shipping estimator",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shipping_calc_default_country",
+      "label": "Default country",
+      "default": "United States"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "richtext",
+      "name": "Rich text",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "richtext",
+          "type": "richtext",
+          "label": "Rich text",
+          "default": "<p>Use this section to welcome customers to your store, say a bit about your brand, or share news and seasonal promotions.</p>"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "page",
+          "type": "page",
+          "label": "Choose page"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

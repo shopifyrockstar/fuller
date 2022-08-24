@@ -1,0 +1,170 @@
+<section class="atc-banner--container" role="log" data-atc-banner>
+  <!-- Flyout Update starts -->
+  <div class="atc-banner--backdrop" data-atc-banner-close></div>
+  <div class="atc-banner--outer">
+    
+    <div class="atc-banner--inner">
+      
+      <div class="atc-banner--cart_info top-cart-info">
+        
+        <div class="atc-banner--cart">
+          <div class="atc-banner--cart-subtotal">
+            <span class="atc-subtotal--label">
+              {{ 'add_to_cart_banner.general.sub_total' | t }}
+            </span>
+            <span class="atc-subtotal--price money" data-atc-banner-cart-subtotal></span>
+          </div>
+
+          {% comment %}
+          <a class="button-secondary atc-button--viewcart" href="{{ routes.cart_url }}" data-atc-banner-cart-button>
+            {{ 'add_to_cart_banner.general.view_cart_html' | t: count: '<span></span>' }}
+          </a>
+          {% endcomment %}
+
+          <form
+                action="{{ routes.cart_url }}"
+                method="post"
+                aria-label="cart checkout"
+                class=""
+                >
+            <button class="button-primary atc-button--checkout hidden" type="submit" name="checkout" data-atc-button-checkout>
+              {% if settings.enable_checkout_lock_icon %}
+              {% include 'icon-library', id: 'icon-checkout-lock' %}
+              {% endif %}
+              <span>{{ 'add_to_cart_banner.general.checkout' | t }}</span>
+            </button>
+          </form>
+        </div>
+      
+        <h2 class="atc-banner--product-title">
+          {{ 'add_to_cart_banner.general.in_your_cart' | t }}
+        </h2>
+        
+        <div class="cart-announcement">
+          <div class="top-wrapper">
+            <p class="spend-more hidden">
+              Spend <span class="remaining">$75</span> more for free shipping*
+            </p>
+            <p class="free-gift-first hidden">
+              Spend total $150 to receive free gift offer #1, only <span class="first-gift"></span> to go!
+            </p>
+            <p class="free-gift-second hidden">
+             Spend total $200 to receive free gift offer #2, only <span class="second-gift"></span> to go!
+            </p>
+            <p class="free-gift-third hidden">
+             Spend total $250 to receive free gift offer #3, only <span class="third-gift"></span> to go!
+            </p>
+            <p class="free-gift-fourth hidden">
+              Congrautulations you have earned free gift offer #3!
+            </p> 
+            <a class="spend-more-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free shipping</a>
+            <a class="free-gift-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free gift</a>
+            
+          </div>
+          <div class="bottom-wrapper">
+            <p class="hidden free-gift-bottom-spend-more free-gift-bottom">
+              Spend $75 receive Free Shipping
+            </p>            
+            <p class="hidden free-gift-bottom-first free-gift-bottom">
+              Spend $150 receive Hand Sanitizer Gel a $18.49 value
+            </p>
+            <p class="hidden free-gift-bottom-second free-gift-bottom">
+              Spend $200 receive Hand Sanitizer Gel a $18.49 value & Fulsol Spray a $14.99 value
+            </p>
+            <p class="free-gift-bottom-third hidden free-gift-bottom">
+              <span class="desktop-show">Spend $250 receive Hand Sanitizer Gel a $18.49 value & Fulsol Spray a $14.99 value & Fuller Brush Pin a $19.99 value</span>
+              <span class="mobile-show">Spend $250 receive Free Gift #1 & Free Gift #2 & Free Gift #3</span>
+            </p>
+            <p class="free-gift-bottom-fourth hidden free-gift-bottom">
+              Congrats, you've earned all 3 free gifts
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="progress-bar-wrapper">
+          <div class="progress-bar-component">
+            <progress data-index="4" max="7500" class="progress-bar progress-bar-first" value="70"></progress> 
+            <span class="tier-label first">Free <br>Shipping*</span>
+            <progress data-index="3" max="7500" class="progress-bar progress-bar-second" value="0"></progress> 
+            <span class="tier-label last second ">Free Gift <br> Offer #1<br>Spend $150</span>
+<!--             <span class="tier-label second mobile-show">Free Gift <br> Offer #1</span> -->
+            <progress data-index="2" max="5000" class="progress-bar progress-bar-third" value="0"></progress> 
+            <span class="tier-label last third ">Free Gift <br> Offer #2<br>Spend $200</span>
+<!--             <span class="tier-label third mobile-show">Free Gift <br> Offer #2</span> -->
+            <progress data-index="1" max="5000" class="progress-bar progress-bar-fourth" value="0"></progress> 
+            <span class="tier-label last ">Free Gift <br> Offer #3<br>Spend $250</span>
+<!--             <span class="tier-label last mobile-show">Free Gift <br> Offer #3</span> -->
+          </div>
+        </div>
+        
+        <hr/>
+        
+      </div>
+
+      <div class="atc-banner--products">
+        <div class="atc-banner--product">
+          <div class="atc--products_in_cart"></div>
+        </div>
+      </div>
+
+      <div class="atc-banner--cart_info">
+        
+        <hr/>
+        
+        <div class="atc-banner--cart">
+          <div class="atc-banner--cart-subtotal">
+            <span class="atc-subtotal--label">
+              {{ 'add_to_cart_banner.general.sub_total' | t }}
+            </span>
+            <span class="atc-subtotal--price money" data-atc-banner-cart-subtotal></span>
+          </div>
+
+          {% comment %}
+          <a class="button-secondary atc-button--viewcart" href="{{ routes.cart_url }}" data-atc-banner-cart-button>
+            {{ 'add_to_cart_banner.general.view_cart_html' | t: count: '<span></span>' }}
+          </a>
+          {% endcomment %}
+
+          <form
+                action="{{ routes.cart_url }}"
+                method="post"
+                aria-label="cart checkout"
+                >
+            <button class="button-primary atc-button--checkout" type="submit" name="checkout" data-atc-button-checkout>
+              {% if settings.enable_checkout_lock_icon %}
+              {% include 'icon-library', id: 'icon-checkout-lock' %}
+              {% endif %}
+              <span>{{ 'add_to_cart_banner.general.checkout' | t }}</span>
+            </button>
+          </form>
+          <p class="free-tier-title">
+            Please Note:  Limit of One Free Gift per order.<br>*Free Shipping is only available on US Orders
+          </p>
+        </div>
+        
+      </div>
+      
+      <p id="cart-free-shipping" style="font-weight: 700; color: #565656; text-align: right;">FREE SHIPPING ORDERS $75+</p>
+
+      <!-- <div class="atc-banner--recommended_products">
+        <h2 class="atc-banner--product-title">
+          {{ 'add_to_cart_banner.general.recommendations' | t }}
+        </h2>
+        <div class="atc--products_recommendations"><ul class="product-row"></ul></div>
+      </div> -->
+      <div class="nosto_element" id="nosto-minicart-1"></div>
+
+    </div>
+
+    <button
+      class="atc-banner--close"
+      type="button"
+      aria-label="{{ 'general.accessibility.close' | t }}"
+      data-atc-banner-close
+    >
+      {% include 'icon-library', id: 'icon-menu-close' %}
+    </button>
+  </div>
+  <!-- Flyout Update ends -->
+</section>

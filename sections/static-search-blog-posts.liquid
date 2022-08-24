@@ -1,0 +1,253 @@
+<script
+  type="application/json"
+  data-section-type="static-search-blog-posts"
+  data-section-id="{{ section.id }}">
+</script>
+
+{% assign enable_content = section.settings.enable_search_articles_pages %}
+
+{% assign paginate_by = section.settings.results_per_page_range %}
+
+{% paginate search.results by paginate_by %}
+
+  {% comment %}
+    Calculate number of results by type.
+  {% endcomment %}
+  {% assign article_count = 0 %}
+
+  {% assign page_title = 'general.accessibility.search' | t %}
+  {% assign total_result_count = search.results.size %}
+  {% if total_result_count > 0 %}
+    {%
+      include 'search-sanitizer',
+      search_terms: search.terms
+    %}
+    {% assign page_title = 'general.accessibility.search_results' | t: terms: sanitized_terms %}
+  {% endif %}
+
+  {% for item in search.results %}
+
+    {% if enable_content %}
+      {% if item.object_type == 'article' %}
+        {% assign article_count = article_count | plus: 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %}
+    Calculate the number of result types.
+  {% endcomment %}
+  {% assign type_count = 0 %}
+  {% if article_count > 0 %}{% assign type_count = type_count | plus: 1 %}{% endif %}
+
+  <div class="productgrid--outer layout--no-sidebar" data-html>
+    <div class='processing-overlay'></div>
+    <div class="productgrid--wrapper">
+      {% comment %}
+        {%- if section.settings.show_breadcrumbs -%}
+          {% include 'breadcrumbs' %}
+        {%- endif -%}
+      {% endcomment %}
+      <nav class="breadcrumbs-container">
+        <a href="https://fuller.com/pages/ask-the-fuller-brush-man">&laquo; Back to all</a>
+      </nav>
+      
+      <div class="search-blog-posts-container">
+      
+        <div class="page-banner">
+          <div class="img_wrapper">
+            <img sizes="(min-width: 992px) 1200px, (min-width: 768px) and (max-width: 991px) 800px, 400px" data-srcset="https://cdn.shopify.com/s/files/1/0430/0704/9886/t/8/assets/pf-323e2bc8--Fullercloseupsmallcaricature.jpg?v=1595261885 1200w, https://cdn.shopify.com/s/files/1/0430/0704/9886/t/8/assets/pf-323e2bc8--Fullercloseupsmallcaricature.jpg?v=1595261885 800w, https://cdn.shopify.com/s/files/1/0430/0704/9886/t/8/assets/pf-323e2bc8--Fullercloseupsmallcaricature.jpg?v=1595261885 400w" srcset="https://cdn.shopify.com/s/files/1/0430/0704/9886/t/8/assets/pf-323e2bc8--Fullercloseupsmallcaricature.jpg?v=1595261885 1200w, https://cdn.shopify.com/s/files/1/0430/0704/9886/t/8/assets/pf-323e2bc8--Fullercloseupsmallcaricature.jpg?v=1595261885 800w, https://cdn.shopify.com/s/files/1/0430/0704/9886/t/8/assets/pf-323e2bc8--Fullercloseupsmallcaricature.jpg?v=1595261885 400w" class="sc-qZtVr dLIPjF pf-b2323e2b pf-img-loaded" data-pf-type="Image2">
+          </div>
+          <div class="text_wrapper">
+            <h1>Ask The Fuller Brush Man</h1>
+            <p>Can't Find Your Answer <a href="#contact_form">Click Here to ask.</a></p>
+          </div>
+        </div>
+        
+        <form action="/search" method="get" role="search" data-pf-type="Search Form" class="sc-pIUCW kFpHGq pf-4e574970">
+          <input type="search" name="q" placeholder="Search" value="">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <input type="hidden" name="view" value="blog-posts">
+          <input type="hidden" name="type" value="article">
+        </form>
+
+        <div
+          class="
+            productgrid--masthead
+            {% unless section.settings.show_breadcrumbs %}no-breadcrumbs{% endunless %}
+          "
+        >
+          <h1 class="visually-hidden">{{ page_title }}</h1>
+          {% comment %}
+            {%
+              include 'page-search-form',
+
+              enable_content: enable_content
+            %}
+          {% endcomment %}
+        </div>
+
+        {% if enable_content and search.performed %}
+          <div class="productgrid--footer">
+            {%
+              include 'results-search-content-blog-posts',
+              title: 'search.general.posts_title',
+              results: search.results,
+              results_type: 'article',
+              results_count: article_count
+            %}
+          </div>
+        {% endif %}
+        
+        <h3 id="contact_form">
+          Can't Find Your Answer? Ask The Fuller Brush Man.
+        </h3>
+        <p>Ask the Fuller Brush man any question and get an answer within 24 hours.</p>
+        
+        {% form 'contact' %}
+          {% assign has_message = false %}
+
+          {% if form.errors != blank %}
+            {% assign has_message = true %}
+            {% assign message_type = 'error' %}
+          {% endif %}
+
+          {% if form.posted_successfully? %}
+            {% assign has_message = true %}
+            {% assign message_type = 'success' %}
+          {% endif %}
+
+          {% if has_message %}
+            <div class="contact-message message--{{ message_type }}">
+              {% case message_type %}
+                {% when 'success' %}
+                  <p>
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                {% when 'error' %}
+                  {{ form.errors | default_errors }}
+              {% endcase %}
+            </div>
+          {% endif %}
+
+          <div class="form-fields-columns">
+            <div class="form-field form-field--half">
+              {% assign value = '' %}
+              {%- if form.first_name -%}
+                {% assign value = form.first_name %}
+              {%- elsif customer -%}
+                {% assign value = customer.first_name %}
+              {%- endif -%}
+
+              <label for="contact_first_name">
+                {{ 'contact.form.first_name' | t }}
+              </label>
+              <input
+                class="form-field-input form-field-text {% if form.errors contains 'first_name' %}form-field-error{% endif %}"
+                id="contact_first_name"
+                name="contact[first_name]"
+                placeholder="{{ 'contact.form.placeholder.first_name' | t }}"
+                type="text"
+                value="{{ value }}">
+            </div>
+            
+            <div class="form-field form-field--half">
+              {% assign value = '' %}
+              {%- if form.last_name -%}
+                {% assign value = form.last_name %}
+              {%- elsif customer -%}
+                {% assign value = customer.last_name %}
+              {%- endif -%}
+
+              <label for="contact_last_name">
+                {{ 'contact.form.last_name' | t }}
+              </label>
+              <input
+                class="form-field-input form-field-text {% if form.errors contains 'last_name' %}form-field-error{% endif %}"
+                id="contact_last_name"
+                name="contact[last_name]"
+                placeholder="{{ 'contact.form.placeholder.last_name' | t }}"
+                type="text"
+                value="{{ value }}">
+            </div>
+          </div>
+
+          <div class="form-field form-field--half">
+            {% assign value = '' %}
+            {%- if form.email -%}
+            {% assign value = form.email %}
+            {%- elsif customer -%}
+            {% assign value = customer.email %}
+            {%- endif -%}
+            
+            <label for="contact_email">
+              {{ 'contact.form.email' | t }}
+            </label>
+            <input
+                   class="form-field-input form-field-text {% if form.errors contains 'email' %}form-field-error{% endif %}"
+                   id="contact_email"
+                   name="contact[email]"
+                   placeholder="{{ 'contact.form.placeholder.email' | t }}"
+                   type="text"
+                   value="{{ value }}"
+                   autocorrect="off"
+                   autocapitalize="off">
+          </div>
+
+          <div class="form-field">
+            {% assign value = '' %}
+            {%- if form.body -%}
+              {% assign value = form.body %}
+            {%- endif -%}
+
+            <label for="contact_body">
+              {{ 'contact.form.your_question' | t }}
+            </label>
+            <textarea
+              class="form-field-input form-field-textarea {% if form.errors contains 'body' %}form-field-error{% endif %}"
+              id="contact_message" name="contact[message]" placeholder="{{ 'contact.form.placeholder.message' | t }}">{{ value }}</textarea>
+          </div>
+
+          <div class="form-action-row">
+            <button class="button-primary contact-form-button" type="submit">
+              <i class="fa fa-envelope" data-pf-type="Icon"></i>{{ 'contact.form.submit' | t }}
+            </button>
+          </div>
+        {% endform %}
+      
+      </div>
+
+    </div>
+  </div>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Search results",
+  "class": "search--section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumb navigation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "results_per_page_range",
+      "label": "Results per page",
+      "min": 24,
+      "max": 48,
+      "step": 12,
+      "default": 24
+    },
+    {
+      "id": "enable_search_articles_pages",
+      "type": "checkbox",
+      "label": "Show blog posts and pages in search results",
+      "default": true
+    }
+  ]
+}
+
+{% endschema %}

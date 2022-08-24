@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "pf-45220adc": {
+      "type": "pf-45220adc",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "pf-45220adc"
+  ],
+  "layout": "theme.pagefly"
+}

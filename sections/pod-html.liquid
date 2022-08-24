@@ -1,0 +1,23 @@
+<div class="homepage_content clearfix">
+  <div class="container">    
+    <div class="section clearfix">
+      {% if section.settings.custom_html != blank %}
+      	{{ section.settings.custom_html }}          
+      {% endif %}
+    </div>    
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Custom HTML",
+  "class": "custom-html-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_html",
+      "label": "Custom html"
+    }
+  ]
+}
+
+{% endschema %}

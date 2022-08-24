@@ -1,0 +1,51 @@
+<header class="page-masthead">
+  {% comment %}
+  <h1 class="page-title">
+    {{ page.title }}
+  </h1>
+  {% endcomment %}
+</header>
+
+{% section 'dynamic-image-with-text' %}
+
+{% section 'dynamic-collection-list' %}
+
+{% section 'static-html' %}
+
+
+<div class="page-content page-content-contact">
+{% section 'faq-section' %}
+  {% comment %}
+  {{ page.content }}
+  {% endcomment %}
+</div>
+
+<center><h2> Contact Us With Any Questions</h2></center>
+{% render 'contact-form' %}
+
+{% section 'static-html-2' %}
+
+{% section 'dynamic-promo-grid' %}
+
+
+{% comment %}<article class="site-page" data-template-page>
+  <header class="page-masthead">
+    <h1 class="page-title">
+      {{ page.title }}
+    </h1>
+  </header>
+
+  {% if page.content != blank %}
+    <div class="page-content rte">
+      {{ page.content }}
+      {% if page.handle == 'rewards' %}
+      	<a class="button-primary rewards-button" 
+           href="https://cdn.shopify.com/s/files/1/0430/0704/9886/files/FullerPoints_FAQs_RulesTerms_Final_050521.pdf?v=1620422511"
+           target="_blank">
+          Frequently Asked Questions & Program Rules and Terms
+      	</a>
+      {% endif %}
+    </div>
+  {% endif %}
+  
+</article>{% endcomment %}

@@ -1,0 +1,10 @@
+{% if template == 'article' %}
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+  var article = {
+  Title: {{ article.title | json }}
+};
+  _learnq.push(['track', 'Viewed Article', article]);
+  </script>
+{% endif %}

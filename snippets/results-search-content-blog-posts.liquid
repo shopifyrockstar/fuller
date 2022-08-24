@@ -1,0 +1,55 @@
+{% comment %}
+  @param title {String}
+    Title for section
+
+  @param results {Object}
+    List of results
+
+  @param results_type {String}
+    Type of search result to display
+
+  @param results_count {Number}
+    How many search results for given type have been found
+{% endcomment %}
+
+
+{%
+  include 'search-sanitizer',
+  search_terms: search.terms
+%}
+
+<div class="productgrid--footer-item">
+  <h2 class="productgrid--footer-title">
+    {{ title | t }}
+  </h2>
+  
+  {% if results_count > 0 %}
+    <div class="sc-qPjXN eYzxUD pf-36dfb34d pf-r pf-r-eh" data-pf-type="Row"
+      style="--pf-s-lg:15px; --pf-s-md:15px; --pf-s-sm:15px; --pf-s-xs:15px;">
+      <div class="sc-pbYdQ jklmHY pf-c pf-c-xs--12 pf-c-sm--12 pf-c-md--12 pf-c-lg--12">
+        <div class="sc-pkUyL fTyjzF pf-f44736df" data-pf-type="Column">
+          <div class="sc-puFxT detHrZ pf-a588f447 pf-r pf-r-ew pf-r-ew--3" data-pf-type="BlogList">
+            {% for item in results %}
+              <div class="pf-c">
+                <div class="blog__article article--vertical">
+                  <div class="blog__image">
+                    <a href="{{ item.url }}">
+                      <img alt="{{ item.title }}" src="{{ item.image.src | img_url: '500x' }}" class="pf-img-loaded">
+                    </a>
+                  </div>
+                  <div class="blog__infos">
+                    <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                    <p class="blog__excerpt">{{ item.excerpt }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    {{ 'search.general.no_results_title' | t: terms: sanitized_terms }}
+  {% endif %}
+  
+</div>

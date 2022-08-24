@@ -1,0 +1,18 @@
+
+{% include 'nosto-element' with 'searchpage-nosto-1' %}
+{% form 'contact' %}
+  {% if form.posted_successfully? %}
+    <script>
+    window.location = "https://fuller.com/";
+    </script>
+  {% endif %}
+{% endform %}
+
+<div data-options class="visually-hidden">
+  {}
+</div>
+
+{% section 'static-search' %}
+
+<div id="smoothie-search-redirects-app-data" style="display: none !important;" count="{{ search.results_count }}" shop="{{ shop.permanent_domain }}" query="{{ search.terms }}"></div>
+{% include 'nosto-element' with 'searchpage-nosto-2' %}
