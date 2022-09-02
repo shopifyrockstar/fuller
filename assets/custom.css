@@ -538,7 +538,7 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
   font-weight: bold;
   padding: 1rem 2.6rem;
   background-color:#2E5297;
-  color: #84CAE0;
+  color: #fff;
   max-width: 190px;
 }
 .button-primary.cta-button-2:hover{

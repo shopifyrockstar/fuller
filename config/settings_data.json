@@ -2305,6 +2305,27 @@
           "background": "#000000",
           "opacity": 50
         }
+      },
+      "video-gleam": {
+        "type": "video-gleam",
+        "settings": {
+          "title": "Video",
+          "subheading": "",
+          "heading_color": "#4D4D4D",
+          "subheading_color": "#4D4D4D",
+          "background_color": "",
+          "section_spacing_desktop": 50,
+          "section_spacing_mobile": 36,
+          "url": "https:\/\/vimeo.com\/727881398",
+          "show_caption": false,
+          "caption": "<p>A short description of the video.<\/p>",
+          "autoplay": false,
+          "aspect_ratio": "16-9",
+          "position": "center-center",
+          "show_overlay": false,
+          "background": "#000000",
+          "opacity": 50
+        }
       }
     },
     "content_for_index": [
