@@ -37654,7 +37654,12 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
                     cartItemsDOMContent += '<div class="atc-product-meta">';
                     cartItemsDOMContent += '<span class="atc--product-details--price">';
                     cartItemsDOMContent += '<span class="atc--product-details--price-quantity">'+cartItem.quantity+' \xD7 </span>';
-                    cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.original_price, settings.moneyFormat)+'</span>';
+                    if ( cartItem.discounted_price < cartItem.original_price ){
+                      cartItemsDOMContent += '<span class="atc--product-details--price-value discounted-price money">' + Shopify.formatMoney(cartItem.original_price, settings.moneyFormat) + '</span>' + '<span class="atc--product-details--price-value money">' +  Shopify.formatMoney(cartItem.discounted_price, settings.moneyFormat)+'</span>';  
+                    }else{
+                      cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.original_price, settings.moneyFormat)+'</span>';
+                    }
+                    // cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.discounted_price, settings.moneyFormat)+'</span>';
                     cartItemsDOMContent += '</span>';
                     cartItemsDOMContent += '</div>';
                     cartItemsDOMContent += '</div>';

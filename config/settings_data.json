@@ -567,22 +567,12 @@
               "text": "",
               "link": ""
             }
-          },
-          "e07036b0-3f52-4db5-afa6-9672880ba06e": {
-            "type": "highlight",
-            "settings": {
-              "icon": "none",
-              "title": "CLEANS MULTIPLE SURFACES",
-              "text": "",
-              "link": ""
-            }
           }
         },
         "block_order": [
           "1556580560778-2",
           "4c0662a3-5aca-40a2-9cca-36b35e6e9603",
-          "b2254fd3-2252-41cc-ab83-34b36e38ede3",
-          "e07036b0-3f52-4db5-afa6-9672880ba06e"
+          "b2254fd3-2252-41cc-ab83-34b36e38ede3"
         ],
         "settings": {
           "background_color": "#c4c4c4",
@@ -634,18 +624,18 @@
           "0b279316-8aa0-460a-8119-c81aab15d764": {
             "type": "slide",
             "settings": {
-              "background_image": "shopify:\/\/shop_images\/FullGleam_commercial_1800x600_v2.jpg",
-              "background_image_mobile": "shopify:\/\/shop_images\/FullGleam_commercial_mobile_600x650_v2.jpg",
+              "background_image": "shopify:\/\/shop_images\/Sweeper_commercial_1800x600_v5.jpg",
+              "background_image_mobile": "shopify:\/\/shop_images\/Sweeper_commercial_mobile_600x650_v2.jpg",
               "title": "",
               "text": "",
               "color": "#ffffff",
               "link": "https:\/\/fuller.com\/products\/electrostatic-carpet-sweeper?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=sweeper_infomercial",
               "text_alignment": "center",
-              "button_one_label": "BUY NOW",
-              "button_one_link": "https:\/\/fuller.com\/products\/electrostatic-carpet-sweeper?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=sweeper_infomercial",
+              "button_one_label": "",
+              "button_one_link": "",
               "button_one_style": "primary",
-              "button_two_label": "BUY NOW",
-              "button_two_link": "https:\/\/fuller.com\/products\/stainless-steel-easy-clean-polish-kit?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=fullgleam_infomercial",
+              "button_two_label": "",
+              "button_two_link": "",
               "button_two_style": "primary",
               "button_three_label": "",
               "button_three_link": "",
@@ -1276,6 +1266,7 @@
       "1594142608018": {
         "type": "dynamic-image-with-text-overlay",
         "settings": {
+          "custom_class": "",
           "section_height": "small",
           "background_color": "",
           "section_spacing_desktop": 50,
@@ -1290,7 +1281,9 @@
           "overlay_background": "#b0b0b0",
           "overlay_opacity": 15,
           "link": "shopify:\/\/collections\/personal-care",
-          "button_text": "Personal Care Supplies"
+          "button_text": "Personal Care Supplies",
+          "button_2_link": "",
+          "button_2_text": "Button"
         }
       },
       "1594407725210": {
@@ -1371,6 +1364,7 @@
       "1594534718623": {
         "type": "dynamic-image-with-text-overlay",
         "settings": {
+          "custom_class": "",
           "section_height": "small",
           "background_color": "",
           "section_spacing_desktop": 50,
@@ -1385,7 +1379,9 @@
           "overlay_background": "#a1adba",
           "overlay_opacity": 32,
           "link": "shopify:\/\/collections\/outdoor",
-          "button_text": "Outdoor Cleaning Supplies"
+          "button_text": "Outdoor Cleaning Supplies",
+          "button_2_link": "",
+          "button_2_text": "Button"
         }
       },
       "1594562587236": {
@@ -2191,6 +2187,7 @@
       },
       "16583771307b80589e": {
         "type": "dynamic-image-with-text",
+        "disabled": true,
         "blocks": {
           "16583771307b80589e-0": {
             "type": "image_with_text",
@@ -2309,10 +2306,10 @@
       "video-gleam": {
         "type": "video-gleam",
         "settings": {
-          "title": "Video",
+          "title": "Full Gleam Infomercial",
           "subheading": "",
-          "heading_color": "#4D4D4D",
-          "subheading_color": "#4D4D4D",
+          "heading_color": "#4d4d4d",
+          "subheading_color": "#4d4d4d",
           "background_color": "",
           "section_spacing_desktop": 50,
           "section_spacing_mobile": 36,
@@ -2326,10 +2323,58 @@
           "background": "#000000",
           "opacity": 50
         }
+      },
+      "1663353136f3dbbf89": {
+        "type": "dynamic-image-with-text-overlay",
+        "settings": {
+          "custom_class": "first-banner desktop-show",
+          "section_height": "original",
+          "background_color": "",
+          "section_spacing_desktop": 50,
+          "section_spacing_mobile": 36,
+          "image": "shopify:\/\/shop_images\/ToiletPods-FullGleam_commercial_1800x600_0a5c2688-9c53-4eeb-b550-642ae05edcad.jpg",
+          "position": "center center",
+          "title": "",
+          "text": "",
+          "content_position": "center-center",
+          "overlay_style": "solid",
+          "color": "#ffffff",
+          "overlay_background": "#2e5297",
+          "overlay_opacity": 0,
+          "link": "https:\/\/fuller.com\/products\/toilet-pods-drop-in-toilet-bowl-cleaner?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=toiletpod_infomercial",
+          "button_text": "BUY NOW",
+          "button_2_link": "https:\/\/fuller.com\/products\/stainless-steel-easy-clean-polish-kit?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=fullgleam_infomercial",
+          "button_2_text": "BUY NOW"
+        }
+      },
+      "1663353166370f9168": {
+        "type": "dynamic-image-with-text-overlay",
+        "settings": {
+          "custom_class": "second-banner mobile-show",
+          "section_height": "original",
+          "background_color": "",
+          "section_spacing_desktop": 50,
+          "section_spacing_mobile": 0,
+          "image": "shopify:\/\/shop_images\/ToiletPods-FullGleam_commercial_mobile_600x650_82c16ecf-2714-48eb-92f7-95b45dc8bfc6.jpg",
+          "position": "center center",
+          "title": "",
+          "text": "",
+          "content_position": "center-center",
+          "overlay_style": "solid",
+          "color": "#ffffff",
+          "overlay_background": "#000000",
+          "overlay_opacity": 0,
+          "link": "\/products\/stainless-steel-easy-clean-polish-kit",
+          "button_text": "buy now",
+          "button_2_link": "https:\/\/fuller.com\/products\/stainless-steel-easy-clean-polish-kit?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=fullgleam_infomercial",
+          "button_2_text": "Buy Now"
+        }
       }
     },
     "content_for_index": [
       "1556580560778",
+      "1663353136f3dbbf89",
+      "1663353166370f9168",
       "16583771307b80589e",
       "1656517287da58509d",
       "1594139953781",
