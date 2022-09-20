@@ -91,6 +91,25 @@
     {{ tracking_code }}
 
     <script>
+      if (Shopify.Checkout.step == 'contact_information' ) {
+        console.log("yes contact information page");
+        var first_address_selector = document.querySelector('[data-address-field="address1"] [name="checkout[shipping_address][address1]"]');
+        var form_need_validation = document.querySelector('[data-customer-information-form]');
+         
+        $(form_need_validation).submit(function(evt){
+          evt.stopPropagation();
+          evt.preventDefault();          
+          
+          let first_address = first_address_selector.value;
+          if ( first_address.toLowerCase().indexOf('po box') !== -1 || first_address.toLowerCase().indexOf('p.o box') !== -1 || first_address.toLowerCase().indexOf('p.o. box') !== -1 || first_address.toLowerCase().indexOf('po. box') !== -1 ){            
+            alert("We do not ship to P.O. Box numbers");
+          }else{
+            $(form_need_validation).unbind('submit').submit();
+          }
+        });
+      }    
+    </script>
+    <script>
       if (Shopify.Checkout.OrderStatus ) {
 //         console.log("here is order status page");
         $(".nosto_element").removeClass("hidden");
