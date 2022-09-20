@@ -27,6 +27,7 @@
   class="
     image-with-text
     image-with-text-section-height-{{ section.settings.section_height }}
+    {% if section.settings.custom_class != blank %}{{ section.settings.custom_class }}{% endif %}
   "
 >
   <div class="image-with-text-wrapper">
@@ -137,18 +138,21 @@
           </div>
         {% endif %}
 
-        {% if section.settings.button_text != blank %}
-          <span class="image-with-text-button">
-            {{ section.settings.button_text | escape }}
-          </span>
-        {% endif %}
-
-        {% if section.settings.link != blank %}
+        {% if section.settings.link != blank and section.settings.button_text != blank %}
           <a
             class="image-with-text-link"
             href="{{ section.settings.link }}"
-          ></a>
+          >
+            {{ section.settings.button_text | escape }}
+          </a>
         {% endif %}
+        
+        {% if section.settings.button_2_link != blank and section.settings.button_2_text != blank %}
+          <a class="image-with-text-link image-with-text-link-second" href="{{ section.settings.button_2_link }}">
+            {{ section.settings.button_2_text | escape }}
+          </a>
+        {% endif %}
+        
         </div>
     </div>
   </div>
@@ -159,6 +163,11 @@
   "name": "Image with text overlay",
   "class": "image-with-text-section",
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom class"
+    },
     {
       "type": "select",
       "id": "section_height",
@@ -372,6 +381,17 @@
     {
       "type": "text",
       "id": "button_text",
+      "label": "Button text",
+      "default": "Button"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
       "label": "Button text",
       "default": "Button"
     }

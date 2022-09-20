@@ -538,7 +538,7 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
   font-weight: bold;
   padding: 1rem 2.6rem;
   background-color:#2E5297;
-  color: #84CAE0;
+  color: #fff;
   max-width: 190px;
 }
 .button-primary.cta-button-2:hover{
@@ -608,3 +608,108 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
     padding: 0.6rem 1.4rem;
   }
 }
+
+
+.first-banner{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.first-banner .image-with-text-content-wrapper{
+  position: static;
+}
+.first-banner .image-with-text-content-wrapper .image-with-text-link{
+  position: absolute;
+  left: 34%;
+  top: 82%;
+  width: unset;
+  height: unset;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 1rem 2.6rem;
+  background-color: #2e5297;
+  color: #fff;
+  max-width: 190px;
+  text-transform: uppercase;
+}
+.first-banner .image-with-text-content-wrapper .image-with-text-link-second{
+  position: absolute;
+  left: 87%;
+  top: 82%;
+  width: unset;
+  height: unset;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 1rem 2.6rem;
+  background-color: #2e5297;
+  color: #fff;
+  max-width: 190px;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 1201px){
+  .first-banner .image-with-text-content-wrapper .image-with-text-link-second{
+    right: -80px;
+  }
+}
+@media screen and (max-width: 1200px){
+  .first-banner .image-with-text-content-wrapper .image-with-text-link-second{
+    right: -30px;
+    font-size: 0.8rem;
+  }
+  .first-banner .image-with-text-content-wrapper .image-with-text-link{
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 480px){
+  .second-banner .image-with-text-content-wrapper{
+    position: static;
+  }
+  .second-banner .image-with-text-content-wrapper .image-with-text-link{
+    top: 35%;
+    height: unset;
+    padding: 0.5rem 1.5rem;
+    background-color: #2e5297;
+    color: #fff;
+    width: unset;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+    left: 69%;
+  }
+  .second-banner .image-with-text-content-wrapper .image-with-text-link-second{
+    top: 87%;
+    height: unset;
+    width: unset;
+    padding: 0.5rem 1.5rem;
+    background-color: #2e5297;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    left: 28%;
+  }
+}
+
+
+.discounted-price{
+  text-decoration: line-through;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
