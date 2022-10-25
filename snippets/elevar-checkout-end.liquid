@@ -1,5 +1,5 @@
 <script>
-  (function() {
+  (() => {
     const configElement = document.getElementById("elevar-gtm-suite-config");
 
     if (!configElement) {
@@ -13,44 +13,13 @@
     script.type = "text/javascript";
     script.src = config.gtm_suite_script;
 
-    script.onerror = function() {
+    script.onerror = () => {
       console.error("Elevar Data Layer: JS script failed to load");
     };
-    script.onload = function() {
+    script.onload = async () => {
       if (!window.ElevarGtmSuite) {
         console.error("Elevar Data Layer: `ElevarGtmSuite` is not defined");
         return;
-      }
-
-      if (config.event_config.user) {
-        window.ElevarGtmSuite.handlers.user({
-  {%- if checkout -%}
-    cartTotal: "{{- checkout.total_price | times: 0.01 | json -}}",
-    currencyCode: {{- checkout.currency | json -}},
-  {%- else -%}
-    cartTotal: "{{- cart.total_price | times: 0.01 | json -}}",
-    currencyCode: {{- cart.currency.iso_code | json -}},
-  {%- endif -%}
-  {%- if customer -%}
-    customer: {
-      id: "{{- customer.id | json -}}",
-      email: {{- customer.email | json -}},
-      firstName: {{- customer.first_name | json -}},
-      lastName: {{- customer.last_name | json -}},
-      phone: {{- customer.phone | json -}},
-      city: {{- customer.default_address.city | json -}},
-      zip: {{- customer.default_address.zip | json -}},
-      address1: {{- customer.default_address.address1 | json -}},
-      address2: {{- customer.default_address.address2 | json -}},
-      country: {{- customer.default_address.country | json -}},
-      province: {{- customer.default_address.province | json -}},
-      provinceCode: {{- customer.default_address.province_code | json -}},
-      orderCount: "{{- customer.orders_count | json -}}",
-      totalSpent: "{{- customer.total_spent | times: 0.01 | json -}}",
-      tags: {{- customer.tags | join: ', ' | json -}}
-    }
-  {%- endif -%}
-});
       }
 
       const cartData = {
@@ -82,14 +51,106 @@
 }
 ;
 
-      if (config.event_config.save_order_notes) {
-        window.ElevarGtmSuite.handlers.cookieReconcile(cartData);
-        window.ElevarGtmSuite.handlers.paramReconcile(cartData);
+      await window.ElevarGtmSuite.handlers.cartAttributesReconcile(
+        cartData,
+        config.event_config.save_order_notes,
+        config.consent_enabled
+      );
+
+      if (config.event_config.user) {
+        const data = {
+  {%- if checkout -%}
+    cartTotal: "{{- checkout.total_price | times: 0.01 | json -}}",
+    currencyCode: {{- checkout.currency | json -}},
+  {%- else -%}
+    cartTotal: "{{- cart.total_price | times: 0.01 | json -}}",
+    currencyCode: {{- cart.currency.iso_code | json -}},
+  {%- endif -%}
+  {%- if customer -%}
+    customer: {
+      id: "{{- customer.id | json -}}",
+      email: {{- customer.email | json -}},
+      firstName: {{- customer.first_name | json -}},
+      lastName: {{- customer.last_name | json -}},
+      phone: {{- customer.phone | json -}},
+      city: {{- customer.default_address.city | json -}},
+      zip: {{- customer.default_address.zip | json -}},
+      address1: {{- customer.default_address.address1 | json -}},
+      address2: {{- customer.default_address.address2 | json -}},
+      country: {{- customer.default_address.country | json -}},
+      province: {{- customer.default_address.province | json -}},
+      provinceCode: {{- customer.default_address.province_code | json -}},
+      orderCount: "{{- customer.orders_count | json -}}",
+      totalSpent: "{{- customer.total_spent | times: 0.01 | json -}}",
+      tags: {{- customer.tags | join: ', ' | json -}}
+    }
+  {%- endif -%}
+};
+        window.ElevarGtmSuite.handlers.user(data);
       }
 
       {%- if checkout -%}
-        if (config.event_config.checkout_complete && Shopify && Shopify.Checkout && Shopify.Checkout.page === "thank_you") {
-          window.ElevarGtmSuite.handlers.checkoutComplete({%- if checkout -%}
+      const step = Shopify?.Checkout?.step;
+      const page = Shopify?.Checkout?.page;
+      const isOnBeginCheckout = step === "contact_information";
+      const isOnThankYouPage = page?.includes("thank_you");
+
+      {%- if checkout.attributes["_elevar_visitor_info"] == blank -%}
+      if (config.event_config.save_order_notes && isOnBeginCheckout && Shopify?.Checkout?.token) {
+        const data = {%- if checkout -%}
+  {
+    token: Shopify?.Checkout?.token,
+    currency: {{- checkout.currency | json -}},
+    {%- if customer -%}
+      customer: { email: {{- customer.email | json -}} },
+    {%- else -%}
+      customer: {},
+    {%- endif -%}
+    line_items: [
+      {%- for line_item in checkout.line_items -%}
+        {
+          id: {{- line_item.id | json -}},
+          quantity: {{- line_item.quantity | json -}},
+          title: {{- line_item.title | json -}},
+          variant: {
+            id: {{- line_item.variant.id | json -}},
+            price: {{- line_item.variant.price | json -}},
+            sku: {{- line_item.variant.sku | json -}},
+            title: {{- line_item.variant.title | json -}},
+            product: {
+              id: {{- line_item.variant.product.id | json -}},
+              title: {{- line_item.variant.product.title | json -}},
+              vendor: {{- line_item.variant.product.vendor | json -}}
+            }
+          }
+        },
+      {%- endfor -%}
+    ],
+    {%- if checkout.shipping_address -%}
+      shipping_address: {
+        city: {{- checkout.shipping_address.city | json -}},
+        country: {{- checkout.shipping_address.country | json -}},
+        country_code: {{- checkout.shipping_address.country_code | json -}},
+        phone: {{- checkout.shipping_address.phone | json -}},
+        province: {{- checkout.shipping_address.province | json -}},
+        province_code: {{- checkout.shipping_address.province_code | json -}}
+      },
+    {%- else -%}
+      shipping_address: {},
+    {%- endif -%}
+    shipping_price: {{- checkout.shipping_price | json -}},
+    subtotal_price: {{- checkout.order.subtotal_price | json -}},
+    total_price: {{- checkout.total_price | json -}},
+    total_tax: {{- checkout.tax_price | json -}}
+  }
+{%- endif -%}
+;
+        window.ElevarGtmSuite.handlers.storeOrderNotesOffsite(data);
+      }
+      {%- endif -%}
+      {% if request.path contains "thank_you" %}
+      if (config.event_config.checkout_complete && isOnThankYouPage) {
+        const data = {%- if checkout -%}
   {
     currencyCode: {{- checkout.currency | json -}},
     actionField: {
@@ -108,7 +169,12 @@
       {% if checkout.discount_applications %}
         coupon: {{ checkout.discount_applications[0].title | json }},
       {% endif %}
-      subTotal: "{{- checkout.line_items_subtotal_price | times: 0.01 | json -}}",
+      {%- if order.subtotal_price -%}
+        subTotal: "{{- order.subtotal_price | times: 0.01 | json -}}",
+      {%- elsif checkout.subtotal_price -%}
+        subTotal: "{{- checkout.subtotal_price | times: 0.01 | json -}}",
+      {%- endif -%}
+      productSubTotal: "{{- checkout.line_items_subtotal_price | times: 0.01 | json -}}",
       discountAmount: "{{- checkout.discounts_amount | times: 0.01 | json -}}"
     },
     {%- if checkout.customer -%}
@@ -155,10 +221,13 @@
     landingSite: {{- checkout.landing_site | json -}}
   }
 {%- endif -%}
-);
-        }
-        if (Shopify && Shopify.Checkout && Shopify.Checkout.page !== "thank_you") {
-          const checkoutStep = {%- if checkout -%}
+;
+        window.ElevarGtmSuite.handlers.checkoutComplete(data);
+      }
+      {%- endif -%}
+
+      if (Shopify?.Checkout && !isOnThankYouPage) {
+        const data = {%- if checkout -%}
   {
     currencyCode: {{- checkout.currency | json -}},
     items: [
@@ -182,13 +251,13 @@
 {%- endif -%}
 ;
 
-          if (config.event_config.cart_reconcile) {
-            window.ElevarGtmSuite.handlers.cartReconcile(checkoutStep);
-          }
-          if (config.event_config.checkout_step) {
-            window.ElevarGtmSuite.handlers.checkoutStep(checkoutStep);
-          }
+        if (config.event_config.cart_reconcile) {
+          window.ElevarGtmSuite.handlers.cartItemsReconcile(data);
         }
+        if (config.event_config.checkout_step) {
+          window.ElevarGtmSuite.handlers.checkoutStep(data);
+        }
+      }
       {%- endif -%}
     };
 
