@@ -37535,14 +37535,14 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
       }
 
       //adding free Cleans & Protects product whenever Polish Kit is added
-      $(cart.items).each(function(i,cartItem){
-        // console.log(cartItem.id, cartItem.quantity);
-        if ( cartItem.id == 35145616654494 ){
-          data[41979958329502] = cartItem.quantity;
-          shouldSaveProductIDs.push(41979958329502);
-          return false;
-        }
-      });
+    //   $(cart.items).each(function(i,cartItem){
+    //     // console.log(cartItem.id, cartItem.quantity);
+    //     if ( cartItem.id == 35145616654494 ){
+    //       data[41979958329502] = cartItem.quantity;
+    //       shouldSaveProductIDs.push(41979958329502);
+    //       return false;
+    //     }
+    //   });
       
       if( cart.total_price < 7500 ){
         $(".cart-announcement .spend-more").removeClass("hidden");
@@ -37552,73 +37552,84 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
         $(".cart-announcement .spend-more-link").removeClass("hidden");
         $(".cart-announcement .free-gift-bottom-spend-more").removeClass("hidden");        
       }
-      
-      else if ( cart.total_price > 7500 && cart.total_price < 15000 ){  //first gift & free shipping are enough and condition for the second gift products
+
+	  else if ( cart.total_price > 7500 ){  //first gift & free shipping are enough and condition for the second gift products
         $(".cart-announcement .free-gift-first").removeClass("hidden");
-        let diff_amount = Shopify.formatMoney((15000 - cart.total_price), settings.moneyFormat);
-        $(".first-gift").html(diff_amount);
+        // let diff_amount = Shopify.formatMoney((15000 - cart.total_price), settings.moneyFormat);
+        // $(".first-gift").html(diff_amount);
         $(".progress-bar-first").attr("value", 7500).addClass("completed");
-        $(".progress-bar-second").attr("value", ( cart.total_price - 7500));
-        $(".cart-announcement .free-gift-link").removeClass("hidden");
-        $(".cart-announcement .free-gift-bottom-first").removeClass("hidden");
+        // $(".progress-bar-second").attr("value", ( cart.total_price - 7500));
+        // $(".cart-announcement .free-gift-link").removeClass("hidden");
+        // $(".cart-announcement .free-gift-bottom-first").removeClass("hidden");
         
-      } 
-
-      else if ( cart.total_price > 15000 && cart.total_price < 20000 ){  //first gift & free shipping & second gift are enough and condition for the final gift
-        $(".progress-bar-first").attr("value", 7500).addClass("completed");
-        $(".progress-bar-second").attr("value", 7500).addClass("completed");
-        $(".progress-bar-third").attr("value", ( cart.total_price - 15000));
-        
-        $(".cart-announcement .free-gift-second").removeClass("hidden");
-        let diff_amount = Shopify.formatMoney((20000 - cart.total_price), settings.moneyFormat);
-        $(".second-gift").html(diff_amount);
-        $(".cart-announcement .free-gift-link").removeClass("hidden");
-        $(".cart-announcement .free-gift-bottom-second").removeClass("hidden");
-
-        data[41041067704478] = 1;
-        shouldSaveProductIDs.push(41041067704478);
-        
-      }
-
-      else if ( cart.total_price > 20000 && cart.total_price < 25000 ){  //first gift & free shipping & second gift are enough and condition for the final gift
-        $(".cart-announcement .free-gift-third").removeClass("hidden");
-        $(".progress-bar-first").attr("value", 7500).addClass("completed");
-        $(".progress-bar-second").attr("value", 7500).addClass("completed");
-        $(".progress-bar-third").attr("value", 5000).addClass("completed");
-        $(".progress-bar-fourth").attr("value", ( cart.total_price - 20000));
-        
-        
-        let diff_amount = Shopify.formatMoney((25000 - cart.total_price), settings.moneyFormat);
-        $(".third-gift").html(diff_amount);
-        $(".cart-announcement .free-gift-link").removeClass("hidden");
-        $(".cart-announcement .free-gift-bottom-third").removeClass("hidden");
-
-        data[41041067704478] = 1;
-        data[41041082941598] = 1;
-
-        
-        shouldSaveProductIDs.push(41041067704478);
-        shouldSaveProductIDs.push(41041082941598);
-
       }
       
+    //   else if ( cart.total_price > 7500 && cart.total_price < 15000 ){  //first gift & free shipping are enough and condition for the second gift products
+    //     $(".cart-announcement .free-gift-first").removeClass("hidden");
+    //     let diff_amount = Shopify.formatMoney((15000 - cart.total_price), settings.moneyFormat);
+    //     $(".first-gift").html(diff_amount);
+    //     $(".progress-bar-first").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-second").attr("value", ( cart.total_price - 7500));
+    //     $(".cart-announcement .free-gift-link").removeClass("hidden");
+    //     $(".cart-announcement .free-gift-bottom-first").removeClass("hidden");
+        
+    //   } 
+
+    //   else if ( cart.total_price > 15000 && cart.total_price < 20000 ){  //first gift & free shipping & second gift are enough and condition for the final gift
+    //     $(".progress-bar-first").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-second").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-third").attr("value", ( cart.total_price - 15000));
+        
+    //     $(".cart-announcement .free-gift-second").removeClass("hidden");
+    //     let diff_amount = Shopify.formatMoney((20000 - cart.total_price), settings.moneyFormat);
+    //     $(".second-gift").html(diff_amount);
+    //     $(".cart-announcement .free-gift-link").removeClass("hidden");
+    //     $(".cart-announcement .free-gift-bottom-second").removeClass("hidden");
+
+    //     data[41041067704478] = 1;
+    //     shouldSaveProductIDs.push(41041067704478);
+        
+    //   }
+
+    //   else if ( cart.total_price > 20000 && cart.total_price < 25000 ){  //first gift & free shipping & second gift are enough and condition for the final gift
+    //     $(".cart-announcement .free-gift-third").removeClass("hidden");
+    //     $(".progress-bar-first").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-second").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-third").attr("value", 5000).addClass("completed");
+    //     $(".progress-bar-fourth").attr("value", ( cart.total_price - 20000));
+        
+        
+    //     let diff_amount = Shopify.formatMoney((25000 - cart.total_price), settings.moneyFormat);
+    //     $(".third-gift").html(diff_amount);
+    //     $(".cart-announcement .free-gift-link").removeClass("hidden");
+    //     $(".cart-announcement .free-gift-bottom-third").removeClass("hidden");
+
+    //     data[41041067704478] = 1;
+    //     data[41041082941598] = 1;
+
+        
+    //     shouldSaveProductIDs.push(41041067704478);
+    //     shouldSaveProductIDs.push(41041082941598);
+
+    //   }
       
-      else if ( cart.total_price > 25000 ){
-        $(".progress-bar-first").attr("value", 7500).addClass("completed");
-        $(".progress-bar-second").attr("value", 7500).addClass("completed");
-        $(".progress-bar-third").attr("value", 5000).addClass("completed");
-        $(".progress-bar-fourth").attr("value", 5000).addClass("completed");
+      
+    //   else if ( cart.total_price > 25000 ){
+    //     $(".progress-bar-first").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-second").attr("value", 7500).addClass("completed");
+    //     $(".progress-bar-third").attr("value", 5000).addClass("completed");
+    //     $(".progress-bar-fourth").attr("value", 5000).addClass("completed");
         
-        $(".cart-announcement .free-gift-bottom-fourth").removeClass("hidden");
+    //     $(".cart-announcement .free-gift-bottom-fourth").removeClass("hidden");
         
-        data[41041067704478] = 1;
-        data[41041082941598] = 1;
-        data[41041094607006] = 1;
+    //     data[41041067704478] = 1;
+    //     data[41041082941598] = 1;
+    //     data[41041094607006] = 1;
         
-        shouldSaveProductIDs.push(41041067704478);
-        shouldSaveProductIDs.push(41041082941598);
-        shouldSaveProductIDs.push(41041094607006);
-      }
+    //     shouldSaveProductIDs.push(41041067704478);
+    //     shouldSaveProductIDs.push(41041082941598);
+    //     shouldSaveProductIDs.push(41041094607006);
+    //   }
       
         jQuery.post('/cart/update.js', {
           updates: data,

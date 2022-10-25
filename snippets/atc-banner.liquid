@@ -45,27 +45,30 @@
             <p class="spend-more hidden">
               Spend <span class="remaining">$75</span> more for free shipping*
             </p>
-            <p class="free-gift-first hidden">
+            {% comment %} <p class="free-gift-first hidden">
               Spend total $150 to receive free gift offer #1, only <span class="first-gift"></span> to go!
-            </p>
-            <p class="free-gift-second hidden">
+            </p> {% endcomment %}
+            {% comment %} <p class="free-gift-second hidden">
              Spend total $200 to receive free gift offer #2, only <span class="second-gift"></span> to go!
-            </p>
-            <p class="free-gift-third hidden">
+            </p> {% endcomment %}
+            {% comment %} <p class="free-gift-third hidden">
              Spend total $250 to receive free gift offer #3, only <span class="third-gift"></span> to go!
-            </p>
-            <p class="free-gift-fourth hidden">
+            </p> {% endcomment %}
+            {% comment %} <p class="free-gift-fourth hidden">
               Congrautulations you have earned free gift offer #3!
-            </p> 
-            <a class="spend-more-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free shipping</a>
-            <a class="free-gift-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free gift</a>
+            </p> {% endcomment %}
+            <p class="free-gift-first hidden">
+              Congrautulations you have earned free shipping
+            </p>
+            {% comment %} <a class="spend-more-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free shipping</a>
+            <a class="free-gift-link hidden" href="/collections/all?sort_by=best-selling">Continue shopping to get free gift</a> {% endcomment %}
             
           </div>
           <div class="bottom-wrapper">
             <p class="hidden free-gift-bottom-spend-more free-gift-bottom">
               Spend $75 receive Free Shipping
             </p>            
-            <p class="hidden free-gift-bottom-first free-gift-bottom">
+            {% comment %} <p class="hidden free-gift-bottom-first free-gift-bottom">
               Spend $150 receive Hand Sanitizer Gel a $18.49 value
             </p>
             <p class="hidden free-gift-bottom-second free-gift-bottom">
@@ -74,10 +77,10 @@
             <p class="free-gift-bottom-third hidden free-gift-bottom">
               <span class="desktop-show">Spend $250 receive Hand Sanitizer Gel a $18.49 value & Fulsol Spray a $14.99 value & Fuller Brush Pin a $19.99 value</span>
               <span class="mobile-show">Spend $250 receive Free Gift #1 & Free Gift #2 & Free Gift #3</span>
-            </p>
-            <p class="free-gift-bottom-fourth hidden free-gift-bottom">
+            </p> {% endcomment %}
+            {% comment %} <p class="free-gift-bottom-fourth hidden free-gift-bottom">
               Congrats, you've earned all 3 free gifts
-            </p>
+            </p> {% endcomment %}
           </div>
           
         </div>
@@ -86,14 +89,14 @@
           <div class="progress-bar-component">
             <progress data-index="4" max="7500" class="progress-bar progress-bar-first" value="70"></progress> 
             <span class="tier-label first">Free <br>Shipping*</span>
-            <progress data-index="3" max="7500" class="progress-bar progress-bar-second" value="0"></progress> 
-            <span class="tier-label last second ">Free Gift <br> Offer #1<br>Spend $150</span>
+            {% comment %} <progress data-index="3" max="7500" class="progress-bar progress-bar-second" value="0"></progress> 
+            <span class="tier-label last second ">Free Gift <br> Offer #1<br>Spend $150</span> {% endcomment %}
 <!--             <span class="tier-label second mobile-show">Free Gift <br> Offer #1</span> -->
-            <progress data-index="2" max="5000" class="progress-bar progress-bar-third" value="0"></progress> 
-            <span class="tier-label last third ">Free Gift <br> Offer #2<br>Spend $200</span>
+            {% comment %} <progress data-index="2" max="5000" class="progress-bar progress-bar-third" value="0"></progress> 
+            <span class="tier-label last third ">Free Gift <br> Offer #2<br>Spend $200</span> {% endcomment %}
 <!--             <span class="tier-label third mobile-show">Free Gift <br> Offer #2</span> -->
-            <progress data-index="1" max="5000" class="progress-bar progress-bar-fourth" value="0"></progress> 
-            <span class="tier-label last ">Free Gift <br> Offer #3<br>Spend $250</span>
+            {% comment %} <progress data-index="1" max="5000" class="progress-bar progress-bar-fourth" value="0"></progress> 
+            <span class="tier-label last ">Free Gift <br> Offer #3<br>Spend $250</span> {% endcomment %}
 <!--             <span class="tier-label last mobile-show">Free Gift <br> Offer #3</span> -->
           </div>
         </div>
