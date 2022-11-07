@@ -37535,14 +37535,14 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
       }
 
       //adding free Cleans & Protects product whenever Polish Kit is added
-    //   $(cart.items).each(function(i,cartItem){
-    //     // console.log(cartItem.id, cartItem.quantity);
-    //     if ( cartItem.id == 35145616654494 ){
-    //       data[41979958329502] = cartItem.quantity;
-    //       shouldSaveProductIDs.push(41979958329502);
-    //       return false;
-    //     }
-    //   });
+      $(cart.items).each(function(i,cartItem){
+        // console.log(cartItem.id, cartItem.quantity);
+        if ( cartItem.id == 35145616654494 ){
+          data[41979958329502] = cartItem.quantity;
+          shouldSaveProductIDs.push(41979958329502);
+          return false;
+        }
+      });
       
       if( cart.total_price < 7500 ){
         $(".cart-announcement .spend-more").removeClass("hidden");

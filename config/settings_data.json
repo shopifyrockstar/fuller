@@ -465,8 +465,8 @@
         "settings": {
           "show_announcement": true,
           "homepage_announcement": false,
-          "announcement_text": "FREE SHIPPING $75+ US Orders - Receive up to 3 FREE GIFTS! Add a product to cart for details",
-          "announcement_text_mobile": "FREE SHIPPING $75+ US Orders - Receive up to 3 FREE GIFTS! Add a product to cart for details",
+          "announcement_text": "FREE SHIPPING ON US ORDERS $75+",
+          "announcement_text_mobile": "FREE SHIPPING ON US ORDERS $75+",
           "announcement_link": "",
           "announcement_color": "#000000",
           "announcement_background": "#ffffff"
@@ -2326,6 +2326,7 @@
       },
       "1663353136f3dbbf89": {
         "type": "dynamic-image-with-text-overlay",
+        "disabled": true,
         "settings": {
           "custom_class": "first-banner desktop-show",
           "section_height": "original",
@@ -2349,6 +2350,7 @@
       },
       "1663353166370f9168": {
         "type": "dynamic-image-with-text-overlay",
+        "disabled": true,
         "settings": {
           "custom_class": "second-banner mobile-show",
           "section_height": "original",
