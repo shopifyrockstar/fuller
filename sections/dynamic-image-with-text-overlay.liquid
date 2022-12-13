@@ -30,55 +30,60 @@
     {% if section.settings.custom_class != blank %}{{ section.settings.custom_class }}{% endif %}
   "
 >
-  <div class="image-with-text-wrapper">
-    <div
-      class="image-with-text-background"
-      {% if section.settings.image != blank %}
-        {% capture background_style %}
-          {% if section.settings.section_height == 'original' %}
-            padding-bottom: {{- 100 | divided_by: section.settings.image.aspect_ratio -}}%;
-          {% endif %}
-          background-position: {{ section.settings.position }};
-        {% endcapture %}
-
-        {%- case section.settings.position -%}
-          {%- when 'top left' -%}
-            {%- assign crop = false -%}
-          {%- when 'top center' -%}
-            {%- assign crop = 'top' -%}
-          {%- when 'top right' -%}
-            {%- assign crop = false -%}
-          {%- when 'center left' -%}
-            {%- assign crop = 'left' -%}
-          {%- when 'center center' -%}
-            {%- assign crop = 'center' -%}
-          {%- when 'center right' -%}
-            {%- assign crop = 'right' -%}
-          {%- when 'bottom left' -%}
-            {%- assign crop = false -%}
-          {%- when 'bottom center' -%}
-            {%- assign crop = 'bottom' -%}
-          {%- when 'bottom right' -%}
-            {%- assign crop = false -%}
-          {%- else -%}
-            {%- assign crop = false -%}
-        {%- endcase -%}
-
-        {%
-          include 'rimg',
-          img: section.settings.image,
-          size: '1400x',
-          crop: crop,
-          style: background_style,
-          lazy: settings.lazy_load,
-          background: true
-        %}
-      {% endif %}
-      >
-      {% if onboarding %}
-        {{ 'lifestyle-1' | placeholder_svg_tag }}
-      {% endif %}
-    </div>
+  <div class="image-with-text-wrapper asdf">
+    {% if section.settings.image_link != blank %}
+      <a href="{{ section.settings.image_link }}">
+    {% endif %}
+      <div
+        class="image-with-text-background"
+        {% if section.settings.image != blank %}
+          {% capture background_style %}
+            {% if section.settings.section_height == 'original' %}
+              padding-bottom: {{- 100 | divided_by: section.settings.image.aspect_ratio -}}%;
+            {% endif %}
+            background-position: {{ section.settings.position }};
+          {% endcapture %}
+  
+          {%- case section.settings.position -%}
+            {%- when 'top left' -%}
+              {%- assign crop = false -%}
+            {%- when 'top center' -%}
+              {%- assign crop = 'top' -%}
+            {%- when 'top right' -%}
+              {%- assign crop = false -%}
+            {%- when 'center left' -%}
+              {%- assign crop = 'left' -%}
+            {%- when 'center center' -%}
+              {%- assign crop = 'center' -%}
+            {%- when 'center right' -%}
+              {%- assign crop = 'right' -%}
+            {%- when 'bottom left' -%}
+              {%- assign crop = false -%}
+            {%- when 'bottom center' -%}
+              {%- assign crop = 'bottom' -%}
+            {%- when 'bottom right' -%}
+              {%- assign crop = false -%}
+            {%- else -%}
+              {%- assign crop = false -%}
+          {%- endcase -%}
+  
+          {%
+            include 'rimg',
+            img: section.settings.image,
+            size: '1400x',
+            crop: crop,
+            style: background_style,
+            lazy: settings.lazy_load,
+            background: true
+          %}
+        {% endif %}
+        >
+        {% if onboarding %}
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        {% endif %}
+      </div>
+    
+  
 
     {% if section.settings.overlay_opacity != 0
       and section.settings.overlay_background != 'rgba(0,0,0,0)'
@@ -139,10 +144,7 @@
         {% endif %}
 
         {% if section.settings.link != blank and section.settings.button_text != blank %}
-          <a
-            class="image-with-text-link"
-            href="{{ section.settings.link }}"
-          >
+          <a class="image-with-text-link image-with-text-link-first" href="{{ section.settings.link }}">
             {{ section.settings.button_text | escape }}
           </a>
         {% endif %}
@@ -155,8 +157,31 @@
         
         </div>
     </div>
+  {% if section.settings.image_link != blank %}
+    </a>
+  {% endif %}
   </div>
 </section>
+<style>
+  #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-first{
+    color: {{ section.settings.button_1_color }};
+    background-color: {{ section.settings.button_1_background }};
+  }
+  #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-second{
+    color: {{ section.settings.button_2_color }};
+    background-color: {{ section.settings.button_2_background }};
+  }
+  @media (max-width:480px){
+    #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-first{
+      top: {{ section.settings.button_1_position_y }}%;
+      left: {{ section.settings.button_1_position_x }}%;
+    }
+    #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-second{
+      top: {{ section.settings.button_2_position_y }}%;
+      left: {{ section.settings.button_2_position_x }}%;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -216,6 +241,11 @@
       "step": 1,
       "unit": "px",
       "default": 36
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Section Link"
     },
     {
       "type": "header",
@@ -385,6 +415,38 @@
       "default": "Button"
     },
     {
+      "type": "color",
+      "id": "button_1_background",
+      "label": "Button 1 Background color",
+      "default": "#2e5297"
+    },
+    {
+      "type": "color",
+      "id": "button_1_color",
+      "label": "Button 1 Font color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_1_position_x",
+      "label": "Button 1 Position X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_1_position_y",
+      "label": "Button 1 Position Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
       "type": "url",
       "id": "button_2_link",
       "label": "Link"
@@ -394,6 +456,38 @@
       "id": "button_2_text",
       "label": "Button text",
       "default": "Button"
+    },
+    {
+      "type": "color",
+      "id": "button_2_background",
+      "label": "Button 2 Background color",
+      "default": "#2e5297"
+    },
+    {
+      "type": "color",
+      "id": "button_2_color",
+      "label": "Button 2 Font color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_2_position_x",
+      "label": "Button 2 Position X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_2_position_y",
+      "label": "Button 2 Position Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
     }
   ],
   "presets": [
