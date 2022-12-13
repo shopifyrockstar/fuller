@@ -465,8 +465,8 @@
         "settings": {
           "show_announcement": true,
           "homepage_announcement": false,
-          "announcement_text": "FREE SHIPPING ON US ORDERS $75+",
-          "announcement_text_mobile": "FREE SHIPPING ON US ORDERS $75+",
+          "announcement_text": "FREE Shipping On Orders $75+",
+          "announcement_text_mobile": "FREE Shipping On Orders $75+",
           "announcement_link": "",
           "announcement_color": "#000000",
           "announcement_background": "#ffffff"
@@ -647,10 +647,39 @@
               "overlay_color": "rgba(0,0,0,0)",
               "overlay_opacity": 1
             }
+          },
+          "7c977029-07e9-4312-bf81-dcc8a21133b6": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "background_image": "shopify:\/\/shop_images\/CM-banner-2022.jpg",
+              "background_image_mobile": "shopify:\/\/shop_images\/Cyber_Monday_Sale_Mobile.png",
+              "title": "",
+              "text": "",
+              "color": "#ffffff",
+              "link": "",
+              "text_alignment": "center",
+              "button_one_label": "",
+              "button_one_link": "shopify:\/\/collections\/carpet-sweepers",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "button_three_label": "",
+              "button_three_link": "",
+              "button_three_style": "primary",
+              "button_four_label": "",
+              "button_four_link": "",
+              "button_four_style": "primary",
+              "overlay_style": "solid",
+              "overlay_color": "#000000",
+              "overlay_opacity": 50
+            }
           }
         },
         "block_order": [
-          "0b279316-8aa0-460a-8119-c81aab15d764"
+          "0b279316-8aa0-460a-8119-c81aab15d764",
+          "7c977029-07e9-4312-bf81-dcc8a21133b6"
         ],
         "settings": {
           "show_slideshow": true,
@@ -968,16 +997,7 @@
             "type": "collection",
             "settings": {
               "collection": "bathroom-cleaners",
-              "collection_label": "Bathroom Cleaners",
-              "mobile_collection_label": ""
-            }
-          },
-          "1556571237812-2": {
-            "type": "collection",
-            "settings": {
-              "collection": "kitchen",
-              "image": "shopify:\/\/shop_images\/original-degreaser-kitchen-home-multipurpose-cleaning-solution-degreasers_1498x1498_6949d273-9e24-4647-951f-4461a59054b2.webp",
-              "collection_label": "Kitchen Cleaners",
+              "collection_label": "BATHROOM CLEANERS",
               "mobile_collection_label": ""
             }
           },
@@ -989,16 +1009,25 @@
               "collection_label": "MOPS",
               "mobile_collection_label": ""
             }
+          },
+          "e4bf8be6-fc46-4ab4-89c6-79b4c1906612": {
+            "type": "collection",
+            "settings": {
+              "collection": "appliance-cleaning",
+              "image": "shopify:\/\/shop_images\/original-degreaser-kitchen-home-multipurpose-cleaning-solution-degreasers_1498x1498_6949d273-9e24-4647-951f-4461a59054b2.webp",
+              "collection_label": "KITCHEN",
+              "mobile_collection_label": ""
+            }
           }
         },
         "block_order": [
           "1556571732374",
           "1556571237812-1",
-          "1556571237812-2",
-          "1556571237812-5"
+          "1556571237812-5",
+          "e4bf8be6-fc46-4ab4-89c6-79b4c1906612"
         ],
         "settings": {
-          "title": "FEATURED CATEGORIES",
+          "title": "Shop By Category",
           "subheading": "",
           "heading_color": "#212121",
           "subheading_color": "#4d4d4d",
@@ -1271,6 +1300,7 @@
           "background_color": "",
           "section_spacing_desktop": 50,
           "section_spacing_mobile": 36,
+          "image_link": "shopify:\/\/collections\/personal-care",
           "image": "shopify:\/\/shop_images\/WebsiteBannerPersonalCare.jpg",
           "position": "center center",
           "title": "Personal Care",
@@ -1280,10 +1310,18 @@
           "color": "#545454",
           "overlay_background": "#b0b0b0",
           "overlay_opacity": 15,
-          "link": "shopify:\/\/collections\/personal-care",
+          "link": "",
           "button_text": "Personal Care Supplies",
+          "button_1_background": "#2e5297",
+          "button_1_color": "#ffffff",
+          "button_1_position_x": 50,
+          "button_1_position_y": 50,
           "button_2_link": "",
-          "button_2_text": "Button"
+          "button_2_text": "Button",
+          "button_2_background": "#2e5297",
+          "button_2_color": "#ffffff",
+          "button_2_position_x": 50,
+          "button_2_position_y": 50
         }
       },
       "1594407725210": {
@@ -1369,6 +1407,7 @@
           "background_color": "",
           "section_spacing_desktop": 50,
           "section_spacing_mobile": 36,
+          "image_link": "shopify:\/\/collections\/outdoor-cleaners",
           "image": "shopify:\/\/shop_images\/outdoor.jpg",
           "position": "center center",
           "title": "Outdoor",
@@ -1378,10 +1417,18 @@
           "color": "#000000",
           "overlay_background": "#a1adba",
           "overlay_opacity": 32,
-          "link": "shopify:\/\/collections\/outdoor",
+          "link": "",
           "button_text": "Outdoor Cleaning Supplies",
+          "button_1_background": "#2e5297",
+          "button_1_color": "#ffffff",
+          "button_1_position_x": 50,
+          "button_1_position_y": 50,
           "button_2_link": "",
-          "button_2_text": "Button"
+          "button_2_text": "Button",
+          "button_2_background": "#2e5297",
+          "button_2_color": "#ffffff",
+          "button_2_position_x": 50,
+          "button_2_position_y": 50
         }
       },
       "1594562587236": {
@@ -1665,28 +1712,6 @@
         "type": "static-html",
         "settings": {
           "custom_html": "<div class=\"nosto_element\" id=\"frontpage-nosto-2\"><\/div>"
-        }
-      },
-      "1618412580aa8aebf3": {
-        "type": "dynamic-featured-collection",
-        "disabled": true,
-        "settings": {
-          "title": "Featured Fuller Toilet Pods",
-          "subheading": "",
-          "heading_color": "#4d4d4d",
-          "subheading_color": "#4d4d4d",
-          "background_color": "",
-          "section_spacing_desktop": 50,
-          "section_spacing_mobile": 36,
-          "collection": "toilet-pods-promotion",
-          "product_count": 5,
-          "product_layout": "grid",
-          "cta_text": "Shop Fuller Toilet Pods",
-          "cta_button_style": "primary",
-          "background_image_position": "center-middle",
-          "background_overlay_style": "none",
-          "background_overlay_color": "",
-          "background_overlay_opacity": 50
         }
       },
       "static-html": {
@@ -2161,30 +2186,6 @@
           "opacity": 50
         }
       },
-      "1656517287da58509d": {
-        "type": "dynamic-video",
-        "disabled": true,
-        "settings": {
-          "title": "",
-          "subheading": "",
-          "heading_color": "#4d4d4d",
-          "subheading_color": "#4d4d4d",
-          "background_color": "",
-          "section_spacing_desktop": 50,
-          "section_spacing_mobile": 36,
-          "url": "https:\/\/vimeo.com\/724940161",
-          "button_title": "Shop Waterless Pet Shampoo",
-          "button_url": "https:\/\/fuller.com\/collections\/pet-care?utm_source=front_page&utm_medium=CTA&utm_campaign=video_test&utm_id=video_cta",
-          "show_caption": false,
-          "caption": "<p>A short description of the video.<\/p>",
-          "autoplay": true,
-          "aspect_ratio": "16-9",
-          "position": "center-center",
-          "show_overlay": false,
-          "background": "#000000",
-          "opacity": 50
-        }
-      },
       "16583771307b80589e": {
         "type": "dynamic-image-with-text",
         "disabled": true,
@@ -2326,38 +2327,46 @@
       },
       "1663353136f3dbbf89": {
         "type": "dynamic-image-with-text-overlay",
-        "disabled": true,
         "settings": {
           "custom_class": "first-banner desktop-show",
           "section_height": "original",
           "background_color": "",
           "section_spacing_desktop": 50,
           "section_spacing_mobile": 36,
-          "image": "shopify:\/\/shop_images\/ToiletPods-FullGleam_commercial_1800x600_0a5c2688-9c53-4eeb-b550-642ae05edcad.jpg",
+          "image_link": "",
+          "image": "shopify:\/\/shop_images\/RubberBroom_StainSpray_1800x600_cc9393ce-2792-47c8-ae68-db737d90a1f5.jpg",
           "position": "center center",
           "title": "",
           "text": "",
           "content_position": "center-center",
           "overlay_style": "solid",
           "color": "#ffffff",
-          "overlay_background": "#2e5297",
+          "overlay_background": "#ffffff",
           "overlay_opacity": 0,
-          "link": "https:\/\/fuller.com\/products\/toilet-pods-drop-in-toilet-bowl-cleaner?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=toiletpod_infomercial",
-          "button_text": "BUY NOW",
-          "button_2_link": "https:\/\/fuller.com\/products\/stainless-steel-easy-clean-polish-kit?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=fullgleam_infomercial",
-          "button_2_text": "BUY NOW"
+          "link": "shopify:\/\/products\/fuller-rubber-broom-with-808-telescopic-handle",
+          "button_text": "Buy Now",
+          "button_1_background": "#2e5297",
+          "button_1_color": "#ffffff",
+          "button_1_position_x": 50,
+          "button_1_position_y": 50,
+          "button_2_link": "shopify:\/\/products\/pre-laundry-stain-spray",
+          "button_2_text": "Buy Now",
+          "button_2_background": "#2e5297",
+          "button_2_color": "#ffffff",
+          "button_2_position_x": 50,
+          "button_2_position_y": 50
         }
       },
       "1663353166370f9168": {
         "type": "dynamic-image-with-text-overlay",
-        "disabled": true,
         "settings": {
           "custom_class": "second-banner mobile-show",
           "section_height": "original",
           "background_color": "",
           "section_spacing_desktop": 50,
           "section_spacing_mobile": 0,
-          "image": "shopify:\/\/shop_images\/ToiletPods-FullGleam_commercial_mobile_600x650_82c16ecf-2714-48eb-92f7-95b45dc8bfc6.jpg",
+          "image_link": "",
+          "image": "shopify:\/\/shop_images\/RubberBroom_StainSpray_mobile_600x650_b37a6e19-66ef-4a2f-b776-ef6915c7ff60.jpg",
           "position": "center center",
           "title": "",
           "text": "",
@@ -2366,21 +2375,61 @@
           "color": "#ffffff",
           "overlay_background": "#000000",
           "overlay_opacity": 0,
-          "link": "\/products\/stainless-steel-easy-clean-polish-kit",
-          "button_text": "buy now",
-          "button_2_link": "https:\/\/fuller.com\/products\/stainless-steel-easy-clean-polish-kit?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=fullgleam_infomercial",
-          "button_2_text": "Buy Now"
+          "link": "shopify:\/\/products\/fuller-rubber-broom-with-808-telescopic-handle",
+          "button_text": "Buy Now",
+          "button_1_background": "#2e5297",
+          "button_1_color": "#ffffff",
+          "button_1_position_x": 70,
+          "button_1_position_y": 31,
+          "button_2_link": "shopify:\/\/products\/pre-laundry-stain-spray",
+          "button_2_text": "Buy Now",
+          "button_2_background": "#2e5297",
+          "button_2_color": "#ffffff",
+          "button_2_position_x": 69,
+          "button_2_position_y": 77
+        }
+      },
+      "29c76e9f-9f48-41cd-aff9-e9f613d4b6ff": {
+        "type": "dynamic-image-with-text-overlay",
+        "disabled": true,
+        "settings": {
+          "custom_class": "",
+          "section_height": "original",
+          "background_color": "",
+          "section_spacing_desktop": 50,
+          "section_spacing_mobile": 36,
+          "image_link": "",
+          "image": "shopify:\/\/shop_images\/RubberBroom_StainSpray_1800x600_cc9393ce-2792-47c8-ae68-db737d90a1f5.jpg",
+          "position": "center center",
+          "title": "",
+          "text": "",
+          "content_position": "center-center",
+          "overlay_style": "solid",
+          "color": "#ffffff",
+          "overlay_background": "#000000",
+          "overlay_opacity": 0,
+          "link": "shopify:\/\/products\/fuller-rubber-broom-with-808-telescopic-handle",
+          "button_text": "-",
+          "button_1_background": "#2e5297",
+          "button_1_color": "#ffffff",
+          "button_1_position_x": 50,
+          "button_1_position_y": 50,
+          "button_2_link": "",
+          "button_2_text": "Button",
+          "button_2_background": "#2e5297",
+          "button_2_color": "#ffffff",
+          "button_2_position_x": 50,
+          "button_2_position_y": 50
         }
       }
     },
     "content_for_index": [
       "1556580560778",
+      "29c76e9f-9f48-41cd-aff9-e9f613d4b6ff",
       "1663353136f3dbbf89",
       "1663353166370f9168",
       "16583771307b80589e",
-      "1656517287da58509d",
       "1594139953781",
-      "1618412580aa8aebf3",
       "1556571237812",
       "1555973343999",
       "1555996299340",

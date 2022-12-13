@@ -681,6 +681,8 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
     text-transform: uppercase;
     transform: translate(-50%, -50%);
     left: 69%;
+    right: -10px;
+    max-width: 115px;
   }
   .second-banner .image-with-text-content-wrapper .image-with-text-link-second{
     top: 87%;
@@ -692,6 +694,9 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     left: 28%;
+    right: unset;
+    max-width: 115px;
+    right: -10px;
   }
 }
 
