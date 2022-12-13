@@ -45,10 +45,10 @@
         padding-top: 30px;
       }
     </style>
-    {% include "loyaltylion" %}
-<script>lion.configure({ checkout: true })</script>
 {% render 'weglot_hreftags' %}
 {% render 'weglot_switcher' %}
+{% include "loyaltylion" %}
+<script>lion.configure({ checkout: true })</script>
 </head>
   <body>
   {% render 'elevar-checkout-end' %}
