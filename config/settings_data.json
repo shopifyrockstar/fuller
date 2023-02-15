@@ -402,7 +402,7 @@
               "icon": "icon-cell-phone",
               "title": "Give us a call",
               "text": "<p>1 (800) 235-1938<\/p>",
-              "link": "tel: 1-800-235-1938"
+              "link": "tel:1-800-235-1938"
             }
           },
           "1556582170398": {
@@ -465,8 +465,8 @@
         "settings": {
           "show_announcement": true,
           "homepage_announcement": false,
-          "announcement_text": "FREE Shipping On Orders $75+",
-          "announcement_text_mobile": "FREE Shipping On Orders $75+",
+          "announcement_text": "FREE SHIPPING ON ORDERS $75+",
+          "announcement_text_mobile": "FREE SHIPPING ON ORDERS $75+",
           "announcement_link": "",
           "announcement_color": "#000000",
           "announcement_background": "#ffffff"
@@ -528,7 +528,7 @@
         "disabled": true,
         "settings": {
           "title": "No Litter",
-          "subheading": "<p>We&#x27;ll keep your inbox clean, while you clean.<\/p>",
+          "subheading": "<p>We'll keep your inbox clean, while you clean.<\/p>",
           "heading_color": "#212121",
           "subheading_color": "#212121",
           "background_color": "#ffffff",
@@ -540,6 +540,7 @@
       },
       "1556580560778": {
         "type": "dynamic-highlights-banners",
+        "disabled": true,
         "blocks": {
           "1556580560778-2": {
             "type": "highlight",
@@ -577,7 +578,7 @@
         "settings": {
           "background_color": "#c4c4c4",
           "section_spacing_desktop": 24,
-          "section_spacing_mobile": 20,
+          "section_spacing_mobile": 21,
           "text_alignment": "center",
           "heading_color": "#ffffff",
           "color": "#ffffff",
@@ -624,18 +625,18 @@
           "0b279316-8aa0-460a-8119-c81aab15d764": {
             "type": "slide",
             "settings": {
-              "background_image": "shopify:\/\/shop_images\/Sweeper_commercial_1800x600_v5.jpg",
-              "background_image_mobile": "shopify:\/\/shop_images\/Sweeper_commercial_mobile_600x650_v2.jpg",
+              "background_image": "shopify:\/\/shop_images\/FullGleam_commercial_1800x600_v2.jpg",
+              "background_image_mobile": "shopify:\/\/shop_images\/FullGleam_commercial_mobile_600x650_v2.jpg",
               "title": "",
               "text": "",
               "color": "#ffffff",
-              "link": "https:\/\/fuller.com\/products\/electrostatic-carpet-sweeper?utm_source=tv_commercial&utm_medium=frontpage_banner&utm_campaign=sweeper_infomercial",
+              "link": "",
               "text_alignment": "center",
-              "button_one_label": "",
-              "button_one_link": "",
+              "button_one_label": "Buy Now",
+              "button_one_link": "shopify:\/\/products\/electrostatic-carpet-sweeper",
               "button_one_style": "primary",
-              "button_two_label": "",
-              "button_two_link": "",
+              "button_two_label": "Buy Now",
+              "button_two_link": "shopify:\/\/products\/stainless-steel-easy-clean-polish-kit",
               "button_two_style": "primary",
               "button_three_label": "",
               "button_three_link": "",
@@ -647,44 +648,15 @@
               "overlay_color": "rgba(0,0,0,0)",
               "overlay_opacity": 1
             }
-          },
-          "7c977029-07e9-4312-bf81-dcc8a21133b6": {
-            "type": "slide",
-            "disabled": true,
-            "settings": {
-              "background_image": "shopify:\/\/shop_images\/CM-banner-2022.jpg",
-              "background_image_mobile": "shopify:\/\/shop_images\/Cyber_Monday_Sale_Mobile.png",
-              "title": "",
-              "text": "",
-              "color": "#ffffff",
-              "link": "",
-              "text_alignment": "center",
-              "button_one_label": "",
-              "button_one_link": "shopify:\/\/collections\/carpet-sweepers",
-              "button_one_style": "primary",
-              "button_two_label": "",
-              "button_two_link": "",
-              "button_two_style": "primary",
-              "button_three_label": "",
-              "button_three_link": "",
-              "button_three_style": "primary",
-              "button_four_label": "",
-              "button_four_link": "",
-              "button_four_style": "primary",
-              "overlay_style": "solid",
-              "overlay_color": "#000000",
-              "overlay_opacity": 50
-            }
           }
         },
         "block_order": [
-          "0b279316-8aa0-460a-8119-c81aab15d764",
-          "7c977029-07e9-4312-bf81-dcc8a21133b6"
+          "0b279316-8aa0-460a-8119-c81aab15d764"
         ],
         "settings": {
           "show_slideshow": true,
           "enable_autoplay": false,
-          "autoplay_duration": 12,
+          "autoplay_duration": 6,
           "slideshow_height": "original"
         }
       },
@@ -957,30 +929,6 @@
           "compress_blocks": true
         }
       },
-      "1588826996103": {
-        "type": "dynamic-rich-text",
-        "disabled": true,
-        "blocks": {
-          "1594142406471": {
-            "type": "text",
-            "settings": {
-              "title": "Premium Quality Products To Clean Every Room  OF Your Home",
-              "text": "",
-              "heading_size": "large",
-              "text_alignment": "center"
-            }
-          }
-        },
-        "block_order": [
-          "1594142406471"
-        ],
-        "settings": {
-          "width": "wide",
-          "background_color": "#ffffff",
-          "section_spacing_desktop": 21,
-          "section_spacing_mobile": 18
-        }
-      },
       "1556571237812": {
         "type": "dynamic-collection-list",
         "blocks": {
@@ -1189,107 +1137,6 @@
           "enable_live_search": true,
           "live_search_content_types": "article,page,product",
           "search_quick_links": ""
-        }
-      },
-      "1594139953781": {
-        "type": "dynamic-promo-mosaic",
-        "disabled": true,
-        "blocks": {
-          "1594139953781-1": {
-            "type": "promotion",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/gray.jpg",
-              "title": "Bringing You",
-              "text": "The Highest Quality Cleaning Products For Over 100 Years 🠦",
-              "color": "#4d4d4d",
-              "block_link": "",
-              "button_text": "Back In Stock",
-              "button_style": "primary",
-              "overlay_style": "none",
-              "background": "",
-              "opacity": 50
-            }
-          },
-          "1594139953781-2": {
-            "type": "promotion",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/HP-newsite-b.jpg",
-              "title": "Shop Now",
-              "text": "Shop By Category",
-              "color": "rgba(0,0,0,0)",
-              "block_link": "shopify:\/\/collections",
-              "button_text": "",
-              "button_style": "primary",
-              "overlay_style": "none",
-              "background": "#000000",
-              "opacity": 50
-            }
-          },
-          "1594141344239": {
-            "type": "promotion",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/homepage_-_Copy.jpg",
-              "title": "History",
-              "text": "over 100 years of quality cleaning",
-              "color": "#ffffff",
-              "block_link": "shopify:\/\/pages\/fuller-brush-history",
-              "button_text": "",
-              "button_style": "primary",
-              "overlay_style": "gradient",
-              "background": "#7f7f7f",
-              "opacity": 74
-            }
-          },
-          "1594397144706": {
-            "type": "promotion",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/2_Soap_01.jpg",
-              "title": "New",
-              "text": "Super Strength Dish Soaps",
-              "color": "#ffffff",
-              "block_link": "\/search?type=article%2Cpage%2Cproduct&q=Dish*+Soap*",
-              "button_text": "",
-              "button_style": "primary",
-              "overlay_style": "gradient",
-              "background": "#464646",
-              "opacity": 50
-            }
-          },
-          "1594172196984": {
-            "type": "promotion",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/fuller-guy-black-w-2.jpg",
-              "title": "Ask",
-              "text": "Ask the experts on cleaning products",
-              "color": "#ffffff",
-              "block_link": "shopify:\/\/pages\/faq",
-              "button_text": "",
-              "button_style": "primary",
-              "overlay_style": "solid",
-              "background": "#868686",
-              "opacity": 38
-            }
-          }
-        },
-        "block_order": [
-          "1594139953781-1",
-          "1594139953781-2",
-          "1594141344239",
-          "1594397144706",
-          "1594172196984"
-        ],
-        "settings": {
-          "title": "",
-          "subheading": "",
-          "section_height": "small",
-          "heading_color": "#4d4d4d",
-          "subheading_color": "#4d4d4d",
-          "background_color": "",
-          "section_spacing_desktop": 50,
-          "section_spacing_mobile": 36,
-          "text_alignment": "center-left",
-          "maintain_aspect_ratio": false,
-          "compress_blocks": false
         }
       },
       "1594142608018": {
@@ -1634,27 +1481,6 @@
           "newsletter_text": "",
           "show_social_title": true,
           "show_social_icons": true
-        }
-      },
-      "1595269150902": {
-        "type": "dynamic-search",
-        "disabled": true,
-        "settings": {
-          "title": "Search",
-          "subheading": "<p>Use this section to help customers find the products they&#x27;re looking for.<\/p>",
-          "heading_color": "#4d4d4d",
-          "subheading_color": "#4d4d4d",
-          "background_color": "",
-          "section_spacing_desktop": 50,
-          "section_spacing_mobile": 36,
-          "placeholder": "What are you looking for?",
-          "enable_live_search": false,
-          "live_search_content_types": "article,product",
-          "search_quick_links": "",
-          "position": "center-center",
-          "show-overlay": false,
-          "background": "#000000",
-          "opacity": 50
         }
       },
       "dynamic-image-with-text": {
@@ -2363,8 +2189,8 @@
           "custom_class": "second-banner mobile-show",
           "section_height": "original",
           "background_color": "",
-          "section_spacing_desktop": 50,
-          "section_spacing_mobile": 0,
+          "section_spacing_desktop": 58,
+          "section_spacing_mobile": 33,
           "image_link": "",
           "image": "shopify:\/\/shop_images\/RubberBroom_StainSpray_mobile_600x650_b37a6e19-66ef-4a2f-b776-ef6915c7ff60.jpg",
           "position": "center center",
@@ -2377,13 +2203,13 @@
           "overlay_opacity": 0,
           "link": "shopify:\/\/products\/fuller-rubber-broom-with-808-telescopic-handle",
           "button_text": "Buy Now",
-          "button_1_background": "#2e5297",
+          "button_1_background": "#000000",
           "button_1_color": "#ffffff",
           "button_1_position_x": 70,
           "button_1_position_y": 31,
           "button_2_link": "shopify:\/\/products\/pre-laundry-stain-spray",
           "button_2_text": "Buy Now",
-          "button_2_background": "#2e5297",
+          "button_2_background": "#000000",
           "button_2_color": "#ffffff",
           "button_2_position_x": 69,
           "button_2_position_y": 77
@@ -2393,13 +2219,13 @@
         "type": "dynamic-image-with-text-overlay",
         "disabled": true,
         "settings": {
-          "custom_class": "",
+          "custom_class": "first-banner desktop-show",
           "section_height": "original",
-          "background_color": "",
-          "section_spacing_desktop": 50,
+          "background_color": "rgba(0,0,0,0)",
+          "section_spacing_desktop": 44,
           "section_spacing_mobile": 36,
           "image_link": "",
-          "image": "shopify:\/\/shop_images\/RubberBroom_StainSpray_1800x600_cc9393ce-2792-47c8-ae68-db737d90a1f5.jpg",
+          "image": "shopify:\/\/shop_images\/FullGleam_commercial_1800x600_v2.jpg",
           "position": "center center",
           "title": "",
           "text": "",
@@ -2408,8 +2234,41 @@
           "color": "#ffffff",
           "overlay_background": "#000000",
           "overlay_opacity": 0,
-          "link": "shopify:\/\/products\/fuller-rubber-broom-with-808-telescopic-handle",
-          "button_text": "-",
+          "link": "shopify:\/\/products\/electrostatic-carpet-sweeper",
+          "button_text": "Buy Now",
+          "button_1_background": "#000000",
+          "button_1_color": "#ffffff",
+          "button_1_position_x": 50,
+          "button_1_position_y": 50,
+          "button_2_link": "shopify:\/\/products\/stainless-steel-easy-clean-polish-kit",
+          "button_2_text": "Buy Now",
+          "button_2_background": "#2e5297",
+          "button_2_color": "#ffffff",
+          "button_2_position_x": 50,
+          "button_2_position_y": 50
+        }
+      },
+      "70791088-78c1-41d9-bfd7-39c67a9d46dd": {
+        "type": "dynamic-image-with-text-overlay",
+        "disabled": true,
+        "settings": {
+          "custom_class": "second-banner mobile-show",
+          "section_height": "medium",
+          "background_color": "",
+          "section_spacing_desktop": 50,
+          "section_spacing_mobile": 36,
+          "image_link": "shopify:\/\/products\/electrostatic-carpet-sweeper",
+          "image": "shopify:\/\/shop_images\/Sweeper_commercial_mobile_600x650_v2.jpg",
+          "position": "center center",
+          "title": "Image with text overlay",
+          "text": "<p>Say a bit about your brand, a specific product, or promotion.<\/p>",
+          "content_position": "center-center",
+          "overlay_style": "solid",
+          "color": "#ffffff",
+          "overlay_background": "#000000",
+          "overlay_opacity": 0,
+          "link": "",
+          "button_text": "Button",
           "button_1_background": "#2e5297",
           "button_1_color": "#ffffff",
           "button_1_position_x": 50,
@@ -2426,10 +2285,10 @@
     "content_for_index": [
       "1556580560778",
       "29c76e9f-9f48-41cd-aff9-e9f613d4b6ff",
+      "70791088-78c1-41d9-bfd7-39c67a9d46dd",
       "1663353136f3dbbf89",
       "1663353166370f9168",
       "16583771307b80589e",
-      "1594139953781",
       "1556571237812",
       "1555973343999",
       "1555996299340",
@@ -2437,14 +2296,12 @@
       "16149799907f9483c0",
       "1594407725210",
       "1594534718623",
-      "1588826996103",
       "1594562587236",
       "1594142608018",
       "1614980912dc113291",
       "1556224484141",
       "1555971148754",
-      "1556047304740",
-      "1595269150902"
+      "1556047304740"
     ],
     "blocks": {
       "855628211100114053": {
