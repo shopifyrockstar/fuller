@@ -620,13 +620,13 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-.first-banner .image-with-text-content-wrapper{
+.image-with-text-content-wrapper{
   position: static;
 }
-.first-banner .image-with-text-content-wrapper .image-with-text-link{
+.image-with-text-content-wrapper .image-with-text-link{
   position: absolute;
-  left: 34%;
-  top: 82%;
+  /* left: 34%;
+  top: 82%; */
   width: unset;
   height: unset;
   transform: translate(-50%, -50%);
@@ -638,7 +638,26 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
   max-width: 190px;
   text-transform: uppercase;
 }
-.first-banner .image-with-text-content-wrapper .image-with-text-link-second{
+@media (max-width:1023px) and (min-width: 481px){
+  .image-with-text .image-with-text-content-wrapper .image-with-text-link, .image-with-text .image-with-text-content-wrapper .image-with-text-link-second{
+    font-size: 14px;
+    padding: 10px 20px;
+    max-width: 110px;
+  }
+  .image-with-text .image-with-text-content-wrapper .image-with-text-link-second{
+    right: -25px;
+    max-width: 110px;
+  }  
+}
+@media (max-width:480px){
+  .image-with-text .image-with-text-content-wrapper .image-with-text-link, .image-with-text .image-with-text-content-wrapper .image-with-text-link-second{
+    font-size: 14px;
+    padding: 10px 20px;
+    max-width: 110px;
+    right: -20px;
+  }
+}
+.image-with-text-content-wrapper .image-with-text-link-second{
   position: absolute;
   left: 87%;
   top: 82%;
@@ -652,6 +671,7 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
   color: #fff;
   max-width: 190px;
   text-transform: uppercase;
+  right: -90px;
 }
 @media screen and (min-width: 1201px){
   .first-banner .image-with-text-content-wrapper .image-with-text-link-second{
@@ -661,10 +681,10 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
 @media screen and (max-width: 1200px){
   .first-banner .image-with-text-content-wrapper .image-with-text-link-second{
     right: -30px;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
   .first-banner .image-with-text-content-wrapper .image-with-text-link{
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
 }
 @media screen and (max-width: 480px){
@@ -674,7 +694,7 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
   .second-banner .image-with-text-content-wrapper .image-with-text-link{
     top: 35%;
     height: unset;
-    padding: 0.5rem 1.5rem;
+    /* padding: 0.5rem 1.5rem; */
     background-color: #2e5297;
     color: #fff;
     width: unset;
@@ -688,7 +708,7 @@ img[data-rimg=lazy].slideshow-image, .product-gallery--image img[data-rimg=lazy]
     top: 87%;
     height: unset;
     width: unset;
-    padding: 0.5rem 1.5rem;
+    /* padding: 0.5rem 1.5rem; */
     background-color: #2e5297;
     color: #fff;
     transform: translate(-50%, -50%);

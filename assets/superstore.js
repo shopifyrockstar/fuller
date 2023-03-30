@@ -37525,14 +37525,14 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
       $(".progress-bar").attr("value", 0).removeClass("completed");
 //       $(".cart-announcement .top-wrapper a").removeClass("hidden");
       
-    //   let data = {}; 
-    //   let shouldSaveProductIDs = [];
-    //   const shouldRemoveProductIDs = localStorage.getItem('thefullerbrush_free_gift_product_ids') ? JSON.parse(localStorage.getItem('thefullerbrush_free_gift_product_ids')) : [];
-    //   if (shouldRemoveProductIDs.length) {
-    //     shouldRemoveProductIDs.forEach(id => {
-    //       data[parseInt(id, 10)] = 0;
-    //     });
-    //   }
+      let data = {}; 
+      let shouldSaveProductIDs = [];
+      const shouldRemoveProductIDs = localStorage.getItem('thefullerbrush_free_gift_product_ids') ? JSON.parse(localStorage.getItem('thefullerbrush_free_gift_product_ids')) : [];
+      if (shouldRemoveProductIDs.length) {
+        shouldRemoveProductIDs.forEach(id => {
+          data[parseInt(id, 10)] = 0;
+        });
+      }
 
 	let has_target_product = 0;
 
@@ -37544,6 +37544,10 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
         //   shouldSaveProductIDs.push(41979958329502);
 		  has_target_product = 1;
           return false;
+        }
+        if ( cartItem.id == 35145616654494 ){
+          data[41979958329502] = 1;
+          shouldSaveProductIDs.push(41979958329502);
         }
       });
 
@@ -37572,70 +37576,78 @@ function updateFlyout(cart, recommendation_source_product_id=0) {
 		$(".cart-announcement .free-gift-first").removeClass("hidden");
 		$(".progress-bar-first").attr("value", 7500).addClass("completed");
 	  }
-      
-      
 
-		$.ajax({
-		type:'GET',
-		url:'/cart.js',
-		dataType:'json',
-		success:function(cart){
-			$(cart.items).each(function(i,cartItem){
-			console.log(cartItem);
-			cartItemsDOMContent += '<div class="atc--product" data-product_id="'+cartItem.product_id+'" data-variant_id="'+cartItem.variant_id+'">';
-			cartItemsDOMContent += '<div class="atc--product-image">';
-			cartItemsDOMContent += '<a href="'+cartItem.url+'">';
-			if (cartItem.featured_image) {                      
-				var imageUrl = objImages.getSizedImageUrl(cartItem.featured_image.url, '200x');
-				var image = objImages.loadImage(imageUrl);
-				cartItemsDOMContent += '<img src="'+image+'" alt="'+cartItem.featured_image.alt+'">';
-			} else {
-				cartItemsDOMContent += '<svg class="placeholder--image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 525.5 525.5"><path d="M324.5 212.7H203c-1.6 0-2.8 1.3-2.8 2.8V308c0 1.6 1.3 2.8 2.8 2.8h121.6c1.6 0 2.8-1.3 2.8-2.8v-92.5c0-1.6-1.3-2.8-2.9-2.8zm1.1 95.3c0 .6-.5 1.1-1.1 1.1H203c-.6 0-1.1-.5-1.1-1.1v-92.5c0-.6.5-1.1 1.1-1.1h121.6c.6 0 1.1.5 1.1 1.1V308z"></path><path d="M210.4 299.5H240v.1s.1 0 .2-.1h75.2v-76.2h-105v76.2zm1.8-7.2l20-20c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l1.5 1.5 16.8 16.8c-12.9 3.3-20.7 6.3-22.8 7.2h-27.7v-5.5zm101.5-10.1c-20.1 1.7-36.7 4.8-49.1 7.9l-16.9-16.9 26.3-26.3c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l27.5 27.5v7.8zm-68.9 15.5c9.7-3.5 33.9-10.9 68.9-13.8v13.8h-68.9zm68.9-72.7v46.8l-26.2-26.2c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-26.3 26.3-.9-.9c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-18.8 18.8V225h101.4z"></path><path d="M232.8 254c4.6 0 8.3-3.7 8.3-8.3s-3.7-8.3-8.3-8.3-8.3 3.7-8.3 8.3 3.7 8.3 8.3 8.3zm0-14.9c3.6 0 6.6 2.9 6.6 6.6s-2.9 6.6-6.6 6.6-6.6-2.9-6.6-6.6 3-6.6 6.6-6.6z"></path></svg>';
-			}
-			cartItemsDOMContent += '</a>';
-			cartItemsDOMContent += '</div>';
-			cartItemsDOMContent += '<div class="atc--product-details">';
-			cartItemsDOMContent += '<h2 class="atc--product-details--title productitem--title"><a href="'+cartItem.url+'">'+cartItem.product_title+'</a></h2>';
-			if (cartItem.variant_options[0] !== 'Title' && cartItem.variant_options[0] !== 'Default Title') {
-				cartItemsDOMContent += '<span class="atc--product-details--options">'+cartItem.variant_options.join(', ')+'</span>';
-			}
-			cartItemsDOMContent += '<div class="atc-product-meta">';
-			cartItemsDOMContent += '<span class="atc--product-details--price">';
-			cartItemsDOMContent += '<span class="atc--product-details--price-quantity">'+cartItem.quantity+' \xD7 </span>';
-			if ( cartItem.discounted_price < cartItem.original_price ){
-				cartItemsDOMContent += '<span class="atc--product-details--price-value discounted-price money">' + Shopify.formatMoney(cartItem.original_price, settings.moneyFormat) + '</span>' + '<span class="atc--product-details--price-value money">' +  Shopify.formatMoney(cartItem.discounted_price, settings.moneyFormat)+'</span>';  
-			}else{
-				cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.original_price, settings.moneyFormat)+'</span>';
-			}
-			// cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.discounted_price, settings.moneyFormat)+'</span>';
-			cartItemsDOMContent += '</span>';
-			cartItemsDOMContent += '</div>';
-			cartItemsDOMContent += '</div>';
-			cartItemsDOMContent += '<div class="atc-product-actions">';
-			cartItemsDOMContent += '<span class="atc--product-remove">';
-			cartItemsDOMContent += '<a href="javascript: void(0);" class="btn-remove-cart-item">';
-			cartItemsDOMContent += '<svg class="icon-remove" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><title>Remove icon</title><path fill-rule="evenodd" clip-rule="evenodd" d="M4.11611 5.00001L0.327286 8.78884L1.21117 9.67272L5 5.88389L8.78883 9.67272L9.67271 8.78884L5.88388 5.00001L9.67271 1.21118L8.78882 0.327301L5 4.11613L1.21117 0.327301L0.327286 1.21118L4.11611 5.00001Z" fill="currentColor"></path></svg>';
-			cartItemsDOMContent += '</a>';
-			cartItemsDOMContent += '</span>';
-			cartItemsDOMContent += '<span class="atc--product-qty">';
-			cartItemsDOMContent += '<div class="cart-item--quantity form-fields--qty" data-quantity-wrapper>';
-			cartItemsDOMContent += '<a class="qty_input_action qty_input_action_decrease" href="javascript: void(0);">-</a>';
-			cartItemsDOMContent += '<input type="text" class="input-update-cart-item" value="'+cartItem.quantity+'" readonly>';	
-			cartItemsDOMContent += '<a class="qty_input_action qty_input_action_increase" href="javascript: void(0);">+</a>';
-			cartItemsDOMContent += '</div>';
-			cartItemsDOMContent += '</span>';
-			cartItemsDOMContent += '</div>';
-			cartItemsDOMContent += '</div>';
-			});
-
-			// adding cart items to the ajax cart finally
-			$('.atc--products_in_cart').html(cartItemsDOMContent);
-
-			if(!recommendation_source_product_id){
-			recommendation_source_product_id = cart.items[0].product_id;
-			}                	
-		}
-		})
+		jQuery.post('/cart/update.js', {
+          updates: data,
+          complete: function() {
+            localStorage.removeItem('thefullerbrush_free_gift_product_ids');
+            localStorage.setItem('thefullerbrush_free_gift_product_ids', JSON.stringify(shouldSaveProductIDs));
+        
+            setTimeout(() => {
+              $.ajax({
+              	type:'GET',
+                url:'/cart.js',
+                dataType:'json',
+                success:function(cart){
+                  $(cart.items).each(function(i,cartItem){
+                    console.log(cartItem);
+                    cartItemsDOMContent += '<div class="atc--product" data-product_id="'+cartItem.product_id+'" data-variant_id="'+cartItem.variant_id+'">';
+                    cartItemsDOMContent += '<div class="atc--product-image">';
+                    cartItemsDOMContent += '<a href="'+cartItem.url+'">';
+                    if (cartItem.featured_image) {                      
+                      var imageUrl = objImages.getSizedImageUrl(cartItem.featured_image.url, '200x');
+                      var image = objImages.loadImage(imageUrl);
+                      cartItemsDOMContent += '<img src="'+image+'" alt="'+cartItem.featured_image.alt+'">';
+                    } else {
+                      cartItemsDOMContent += '<svg class="placeholder--image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 525.5 525.5"><path d="M324.5 212.7H203c-1.6 0-2.8 1.3-2.8 2.8V308c0 1.6 1.3 2.8 2.8 2.8h121.6c1.6 0 2.8-1.3 2.8-2.8v-92.5c0-1.6-1.3-2.8-2.9-2.8zm1.1 95.3c0 .6-.5 1.1-1.1 1.1H203c-.6 0-1.1-.5-1.1-1.1v-92.5c0-.6.5-1.1 1.1-1.1h121.6c.6 0 1.1.5 1.1 1.1V308z"></path><path d="M210.4 299.5H240v.1s.1 0 .2-.1h75.2v-76.2h-105v76.2zm1.8-7.2l20-20c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l1.5 1.5 16.8 16.8c-12.9 3.3-20.7 6.3-22.8 7.2h-27.7v-5.5zm101.5-10.1c-20.1 1.7-36.7 4.8-49.1 7.9l-16.9-16.9 26.3-26.3c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l27.5 27.5v7.8zm-68.9 15.5c9.7-3.5 33.9-10.9 68.9-13.8v13.8h-68.9zm68.9-72.7v46.8l-26.2-26.2c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-26.3 26.3-.9-.9c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-18.8 18.8V225h101.4z"></path><path d="M232.8 254c4.6 0 8.3-3.7 8.3-8.3s-3.7-8.3-8.3-8.3-8.3 3.7-8.3 8.3 3.7 8.3 8.3 8.3zm0-14.9c3.6 0 6.6 2.9 6.6 6.6s-2.9 6.6-6.6 6.6-6.6-2.9-6.6-6.6 3-6.6 6.6-6.6z"></path></svg>';
+                    }
+                    cartItemsDOMContent += '</a>';
+                    cartItemsDOMContent += '</div>';
+                    cartItemsDOMContent += '<div class="atc--product-details">';
+                    cartItemsDOMContent += '<h2 class="atc--product-details--title productitem--title"><a href="'+cartItem.url+'">'+cartItem.product_title+'</a></h2>';
+                    if (cartItem.variant_options[0] !== 'Title' && cartItem.variant_options[0] !== 'Default Title') {
+                      cartItemsDOMContent += '<span class="atc--product-details--options">'+cartItem.variant_options.join(', ')+'</span>';
+                    }
+                    cartItemsDOMContent += '<div class="atc-product-meta">';
+                    cartItemsDOMContent += '<span class="atc--product-details--price">';
+                    cartItemsDOMContent += '<span class="atc--product-details--price-quantity">'+cartItem.quantity+' \xD7 </span>';
+                    if ( cartItem.discounted_price < cartItem.original_price ){
+                      cartItemsDOMContent += '<span class="atc--product-details--price-value discounted-price money">' + Shopify.formatMoney(cartItem.original_price, settings.moneyFormat) + '</span>' + '<span class="atc--product-details--price-value money">' +  Shopify.formatMoney(cartItem.discounted_price, settings.moneyFormat)+'</span>';  
+                    }else{
+                      cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.original_price, settings.moneyFormat)+'</span>';
+                    }
+                    // cartItemsDOMContent += '<span class="atc--product-details--price-value money">'+Shopify.formatMoney(cartItem.discounted_price, settings.moneyFormat)+'</span>';
+                    cartItemsDOMContent += '</span>';
+                    cartItemsDOMContent += '</div>';
+                    cartItemsDOMContent += '</div>';
+                    cartItemsDOMContent += '<div class="atc-product-actions">';
+                    cartItemsDOMContent += '<span class="atc--product-remove">';
+                    cartItemsDOMContent += '<a href="javascript: void(0);" class="btn-remove-cart-item">';
+                    cartItemsDOMContent += '<svg class="icon-remove" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none"><title>Remove icon</title><path fill-rule="evenodd" clip-rule="evenodd" d="M4.11611 5.00001L0.327286 8.78884L1.21117 9.67272L5 5.88389L8.78883 9.67272L9.67271 8.78884L5.88388 5.00001L9.67271 1.21118L8.78882 0.327301L5 4.11613L1.21117 0.327301L0.327286 1.21118L4.11611 5.00001Z" fill="currentColor"></path></svg>';
+                    cartItemsDOMContent += '</a>';
+                    cartItemsDOMContent += '</span>';
+                    cartItemsDOMContent += '<span class="atc--product-qty">';
+                    cartItemsDOMContent += '<div class="cart-item--quantity form-fields--qty" data-quantity-wrapper>';
+                    cartItemsDOMContent += '<a class="qty_input_action qty_input_action_decrease" href="javascript: void(0);">-</a>';
+                    cartItemsDOMContent += '<input type="text" class="input-update-cart-item" value="'+cartItem.quantity+'" readonly>';	
+                    cartItemsDOMContent += '<a class="qty_input_action qty_input_action_increase" href="javascript: void(0);">+</a>';
+                    cartItemsDOMContent += '</div>';
+                    cartItemsDOMContent += '</span>';
+                    cartItemsDOMContent += '</div>';
+                    cartItemsDOMContent += '</div>';
+                  });
+        
+                  // adding cart items to the ajax cart finally
+                  $('.atc--products_in_cart').html(cartItemsDOMContent);
+        
+                  if(!recommendation_source_product_id){
+                    recommendation_source_product_id = cart.items[0].product_id;
+                  }                	
+                }
+              })            	
+            }, 500)
+        }
+      });
   		nostojs(api => api.createRecommendationRequest().addElements("nosto-minicart-1").loadRecommendations());
     } else {
       $('.atc--products_in_cart').html('');
