@@ -166,10 +166,14 @@
   #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-first{
     color: {{ section.settings.button_1_color }};
     background-color: {{ section.settings.button_1_background }};
+    top: {{ section.settings.button_1_position_y_desktop }}%;
+    left: {{ section.settings.button_1_position_x_desktop }}%;
   }
   #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-second{
     color: {{ section.settings.button_2_color }};
     background-color: {{ section.settings.button_2_background }};
+    top: {{ section.settings.button_2_position_y_desktop }}%;
+    left: {{ section.settings.button_2_position_x_desktop }}%;
   }
   @media (max-width:480px){
     #shopify-section-{{ section.id }} .image-with-text .image-with-text-wrapper .image-with-text-content-wrapper .image-with-text-link-first{
@@ -428,8 +432,28 @@
     },
     {
       "type": "range",
+      "id": "button_1_position_x_desktop",
+      "label": "Button 1 Position X on desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_1_position_y_desktop",
+      "label": "Button 1 Position Y on desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
       "id": "button_1_position_x",
-      "label": "Button 1 Position X",
+      "label": "Button 1 Position X on mobile",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -439,7 +463,7 @@
     {
       "type": "range",
       "id": "button_1_position_y",
-      "label": "Button 1 Position Y",
+      "label": "Button 1 Position Y on mobile",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -471,8 +495,28 @@
     },
     {
       "type": "range",
+      "id": "button_2_position_x_desktop",
+      "label": "Button 2 Position X on desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "button_2_position_y_desktop",
+      "label": "Button 2 Position Y on desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
       "id": "button_2_position_x",
-      "label": "Button 2 Position X",
+      "label": "Button 2 Position X on mobile",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -482,7 +526,7 @@
     {
       "type": "range",
       "id": "button_2_position_y",
-      "label": "Button 2 Position Y",
+      "label": "Button 2 Position Y on mobile",
       "min": 0,
       "max": 100,
       "step": 1,
